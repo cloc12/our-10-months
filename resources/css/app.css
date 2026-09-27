@@ -1,0 +1,7855 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap');
+
+:root {
+    --pink-50: #fff7fb;
+    --pink-100: #ffeaf4;
+    --pink-200: #ffd1e5;
+    --pink-300: #ffacce;
+    --pink-400: #ff78ad;
+    --pink-500: #f94f94;
+    --pink-600: #e9347d;
+
+    --dark: #3c2633;
+    --white: #ffffff;
+
+    --yellow: #ffe785;
+    --purple: #b69aff;
+
+    --shadow: 0 12px 0 rgba(88, 46, 67, 0.08);
+
+    --border: 3px solid #3c2633;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+
+    font-family:
+        'DM Sans',
+        sans-serif;
+
+    color: var(--dark);
+}
+
+
+a {
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+/* =========================================
+   MAIN WEBSITE
+========================================= */
+
+.gift-body {
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            #ffffff 0 3px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle at 80% 50%,
+            #ffffff 0 3px,
+            transparent 4px
+        ),
+        var(--pink-50);
+}
+
+
+.main-content {
+    min-height: 80vh;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navbar {
+    width:
+        min(
+            1180px,
+            calc(100% - 32px)
+        );
+
+    min-height: 70px;
+
+    margin:
+        18px auto;
+
+    padding:
+        10px 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.92
+        );
+
+    border:
+        var(--border);
+
+    border-radius:
+        22px;
+
+    position: sticky;
+
+    top: 12px;
+
+    z-index: 1000;
+
+    box-shadow:
+        0 8px 0
+        rgba(
+            60,
+            38,
+            51,
+            0.08
+        );
+
+    backdrop-filter:
+        blur(12px);
+}
+
+
+.logo {
+    margin-right: auto;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size: 18px;
+
+    font-weight: 700;
+}
+
+
+.nav-menu {
+    display: flex;
+
+    gap: 6px;
+}
+
+
+.nav-menu a {
+    padding:
+        10px 13px;
+
+    border-radius:
+        12px;
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
+
+    transition:
+        0.2s ease;
+}
+
+
+.nav-menu a:hover {
+    background:
+        var(--pink-100);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.music-toggle {
+    margin-left:
+        12px;
+
+    padding:
+        10px 14px;
+
+    background:
+        var(--pink-400);
+
+    border:
+        2px solid
+        var(--dark);
+
+    border-radius:
+        12px;
+
+    box-shadow:
+        3px 3px 0
+        var(--dark);
+
+    cursor:
+        pointer;
+
+    font-weight:
+        800;
+}
+
+
+.music-toggle:active {
+    transform:
+        translate(
+            3px,
+            3px
+        );
+
+    box-shadow:
+        none;
+}
+
+
+.mobile-menu-button {
+    display: none;
+}
+
+
+/* =========================================
+   MUSIC PLAYER
+========================================= */
+
+.music-player {
+    width: 300px;
+
+    padding: 20px;
+
+    position: fixed;
+
+    right: 25px;
+
+    top: 105px;
+
+    z-index: 1500;
+
+    background:
+        white;
+
+    border:
+        var(--border);
+
+    border-radius:
+        22px;
+
+    box-shadow:
+        8px 8px 0
+        var(--dark);
+
+    transform:
+        translateX(360px);
+
+    transition:
+        0.3s ease;
+}
+
+
+.music-player.show {
+    transform:
+        translateX(0);
+}
+
+
+.music-header {
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+}
+
+
+.music-header h4 {
+    margin:
+        3px 0 14px;
+}
+
+
+.music-small {
+    color:
+        var(--pink-600);
+
+    font-size:
+        10px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+}
+
+
+.close-music {
+    border: 0;
+
+    background:
+        transparent;
+
+    font-size:
+        28px;
+
+    cursor:
+        pointer;
+}
+
+
+.song-selector {
+    width: 100%;
+
+    padding:
+        10px;
+
+    background:
+        var(--pink-50);
+
+    border:
+        2px solid
+        var(--dark);
+
+    border-radius:
+        10px;
+}
+
+
+.music-controls {
+    margin-top:
+        16px;
+
+    display: flex;
+
+    justify-content:
+        center;
+
+    gap: 14px;
+}
+
+
+.music-controls button {
+    width: 48px;
+
+    height: 48px;
+
+    background:
+        white;
+
+    border:
+        2px solid
+        var(--dark);
+
+    border-radius:
+        50%;
+
+    cursor:
+        pointer;
+}
+
+
+.music-controls
+.play-button {
+    background:
+        var(--pink-400);
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    width:
+        min(
+            1160px,
+            calc(100% - 40px)
+        );
+
+    min-height:
+        680px;
+
+    margin:
+        30px auto 80px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.1fr 0.9fr;
+
+    align-items:
+        center;
+
+    gap:
+        50px;
+
+    position:
+        relative;
+}
+
+
+.hero-label,
+.section-label {
+    display:
+        inline-block;
+
+    padding:
+        8px 15px;
+
+    color:
+        var(--pink-600);
+
+    background:
+        var(--pink-100);
+
+    border-radius:
+        100px;
+
+    font-size:
+        12px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+}
+
+
+.hero h1 {
+    margin:
+        25px 0;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        clamp(
+            50px,
+            7vw,
+            92px
+        );
+
+    line-height:
+        0.95;
+
+    letter-spacing:
+        -3px;
+}
+
+
+.pink-text {
+    display:
+        block;
+
+    color:
+        var(--pink-500);
+
+    transform:
+        rotate(-2deg);
+}
+
+
+.hero-description {
+    max-width:
+        610px;
+
+    font-size:
+        18px;
+
+    line-height:
+        1.8;
+}
+
+
+.hero-buttons {
+    margin-top:
+        32px;
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        15px;
+}
+
+
+.primary-button,
+.secondary-button {
+    min-height:
+        52px;
+
+    padding:
+        14px 22px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    border:
+        var(--border);
+
+    border-radius:
+        15px;
+
+    font-weight:
+        900;
+
+    transition:
+        0.2s;
+}
+
+
+.primary-button {
+    background:
+        var(--pink-400);
+
+    box-shadow:
+        5px 5px 0
+        var(--dark);
+}
+
+
+.secondary-button {
+    background:
+        white;
+
+    box-shadow:
+        5px 5px 0
+        var(--dark);
+}
+
+
+.primary-button:hover,
+.secondary-button:hover {
+    transform:
+        translate(
+            -2px,
+            -2px
+        );
+
+    box-shadow:
+        8px 8px 0
+        var(--dark);
+}
+
+
+/* =========================================
+   POLAROID
+========================================= */
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+}
+
+
+.photo-stack {
+    width: 370px;
+    height: 440px;
+
+    position: relative;
+}
+
+
+.polaroid {
+    width: 290px;
+
+    padding:
+        15px 15px 25px;
+
+    position: absolute;
+
+    background:
+        white;
+
+    border:
+        var(--border);
+
+    box-shadow:
+        10px 10px 0
+        rgba(
+            60,
+            38,
+            51,
+            0.15
+        );
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* BACK PHOTO */
+
+.polaroid-back {
+    left: 0;
+    top: 40px;
+
+    transform:
+        rotate(-10deg);
+}
+
+
+/* FRONT PHOTO */
+
+.polaroid-front {
+    right: -20px;
+    top: 80px;
+
+    transform:
+        rotate(8deg);
+}
+
+
+/* ACTUAL PHOTOS */
+
+.polaroid-photo {
+    width: 100% !important;
+
+    aspect-ratio:
+        1 / 1;
+
+    display:
+        block !important;
+
+    object-fit:
+        cover !important;
+
+    object-position:
+        center !important;
+
+    margin:
+        0 !important;
+
+    padding:
+        0 !important;
+}
+
+
+/* TEXT UNDER PHOTO */
+
+.polaroid p {
+    margin:
+        15px 0 0;
+
+    text-align:
+        center;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-weight:
+        700;
+}
+
+
+/* HOVER EFFECT */
+
+.polaroid-back:hover {
+    transform:
+        rotate(-3deg)
+        translateY(-8px)
+        scale(1.04);
+}
+
+
+.polaroid-front:hover {
+    transform:
+        rotate(3deg)
+        translateY(-8px)
+        scale(1.04);
+}
+
+
+.polaroid-back {
+    left: 0;
+
+    top: 40px;
+}
+
+
+.polaroid-front {
+    right: -10px;
+    top: 65px;
+
+    transform:
+        rotate(8deg)
+        scale(1.14);
+}
+
+
+.photo-placeholder {
+    width:
+        100%;
+
+    aspect-ratio:
+        1;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink-100),
+            var(--pink-300)
+        );
+
+    font-size:
+        70px;
+}
+
+
+.polaroid p {
+    margin-bottom:
+        0;
+
+    text-align:
+        center;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+}
+
+
+/* =========================================
+   ADVENTURE CARDS
+========================================= */
+
+.section {
+    width:
+        min(
+            1160px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto 100px;
+}
+
+
+.section-heading {
+    margin-bottom:
+        45px;
+
+    text-align:
+        center;
+}
+
+
+.section-heading h2 {
+    margin:
+        15px 0 10px;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        clamp(
+            36px,
+            5vw,
+            60px
+        );
+}
+
+
+.adventure-grid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap:
+        22px;
+}
+
+
+.adventure-card {
+    min-height:
+        260px;
+
+    padding:
+        28px;
+
+    position:
+        relative;
+
+    background:
+        white;
+
+    border:
+        var(--border);
+
+    border-radius:
+        24px;
+
+    box-shadow:
+        var(--shadow);
+
+    transition:
+        0.25s;
+}
+
+
+.adventure-card:hover {
+    transform:
+        translateY(-8px)
+        rotate(-1deg);
+
+    box-shadow:
+        8px 10px 0
+        var(--dark);
+}
+
+
+.adventure-icon {
+    font-size:
+        42px;
+}
+
+
+.card-number {
+    position:
+        absolute;
+
+    top:
+        28px;
+
+    right:
+        28px;
+
+    color:
+        var(--pink-500);
+
+    font-weight:
+        900;
+}
+
+
+.adventure-card h3 {
+    margin:
+        20px 0 8px;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        27px;
+}
+
+
+.adventure-card p {
+    max-width:
+        420px;
+
+    line-height:
+        1.7;
+}
+
+
+.card-link {
+    margin-top:
+        22px;
+
+    color:
+        var(--pink-600);
+
+    font-weight:
+        900;
+}
+
+
+.special-card {
+    grid-column:
+        span 2;
+
+    background:
+        var(--pink-200);
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.page-header {
+    width:
+        min(
+            850px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        90px auto 45px;
+
+    text-align:
+        center;
+}
+
+
+.page-header h1 {
+    margin:
+        15px 0;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        clamp(
+            44px,
+            7vw,
+            72px
+        );
+}
+
+
+.page-header p {
+    font-size:
+        18px;
+}
+
+
+.coming-soon-card {
+    width:
+        min(
+            700px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        30px auto 100px;
+
+    padding:
+        60px 30px;
+
+    text-align:
+        center;
+
+    background:
+        white;
+
+    border:
+        var(--border);
+
+    border-radius:
+        25px;
+
+    box-shadow:
+        8px 8px 0
+        var(--dark);
+}
+
+
+.big-emoji {
+    font-size:
+        70px;
+}
+
+
+/* =========================================
+   LETTER
+========================================= */
+
+.letter-wrapper {
+    width:
+        min(
+            720px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        30px auto 120px;
+}
+
+
+.letter-paper {
+    padding:
+        clamp(
+            30px,
+            7vw,
+            80px
+        );
+
+    background:
+        #fffdf8;
+
+    border:
+        var(--border);
+
+    box-shadow:
+        12px 12px 0
+        var(--pink-300);
+
+    font-size:
+        17px;
+
+    line-height:
+        2;
+}
+
+
+.letter-paper h2 {
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        30px;
+}
+
+
+.letter-date {
+    text-align:
+        right;
+
+    opacity:
+        0.6;
+}
+
+
+.letter-signature {
+    margin-top:
+        45px;
+}
+
+
+/* =========================================
+   UNLOCK PAGE
+========================================= */
+
+.unlock-body {
+    min-height:
+        100vh;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    overflow:
+        hidden;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #ffd6e8,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #f4dfff,
+            transparent 45%
+        ),
+        #fff8fb;
+}
+
+
+.unlock-container {
+    width:
+        100%;
+
+    padding:
+        30px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+}
+
+
+.unlock-card {
+    width:
+        min(
+            500px,
+            100%
+        );
+
+    padding:
+        50px;
+
+    position:
+        relative;
+
+    text-align:
+        center;
+
+    background:
+        white;
+
+    border:
+        var(--border);
+
+    border-radius:
+        30px;
+
+    box-shadow:
+        12px 12px 0
+        var(--dark);
+
+    animation:
+        cardEntrance
+        0.8s ease;
+}
+
+
+.lock-icon {
+    width:
+        90px;
+
+    height:
+        90px;
+
+    margin:
+        0 auto 20px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        var(--pink-200);
+
+    border:
+        var(--border);
+
+    border-radius:
+        50%;
+
+    font-size:
+        42px;
+
+    animation:
+        float
+        3s ease-in-out
+        infinite;
+}
+
+
+.tiny-label {
+    color:
+        var(--pink-600);
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        3px;
+}
+
+
+.unlock-card h1 {
+    margin:
+        15px 0;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        43px;
+
+    line-height:
+        1.05;
+}
+
+
+.unlock-card h1 span {
+    display:
+        block;
+
+    color:
+        var(--pink-500);
+}
+
+
+.unlock-description {
+    line-height:
+        1.7;
+
+    opacity:
+        0.8;
+}
+
+
+.hint-box {
+    margin:
+        22px 0;
+
+    padding:
+        12px;
+
+    background:
+        var(--pink-50);
+
+    border:
+        2px dashed
+        var(--pink-400);
+
+    border-radius:
+        12px;
+
+    font-size:
+        14px;
+}
+
+
+.unlock-card label {
+    display:
+        block;
+
+    margin-bottom:
+        7px;
+
+    text-align:
+        left;
+
+    font-size:
+        13px;
+
+    font-weight:
+        800;
+}
+
+
+.unlock-card input {
+    width:
+        100%;
+
+    padding:
+        15px;
+
+    border:
+        var(--border);
+
+    border-radius:
+        14px;
+
+    outline:
+        none;
+
+    text-align:
+        center;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        2px;
+}
+
+
+.unlock-card input:focus {
+    box-shadow:
+        0 0 0 5px
+        var(--pink-100);
+}
+
+
+.unlock-button {
+    width:
+        100%;
+
+    margin-top:
+        15px;
+
+    padding:
+        15px;
+
+    background:
+        var(--pink-400);
+
+    border:
+        var(--border);
+
+    border-radius:
+        14px;
+
+    box-shadow:
+        5px 5px 0
+        var(--dark);
+
+    cursor:
+        pointer;
+
+    font-weight:
+        900;
+
+    transition:
+        0.2s;
+}
+
+
+.unlock-button:hover {
+    transform:
+        translate(
+            -2px,
+            -2px
+        );
+
+    box-shadow:
+        7px 7px 0
+        var(--dark);
+}
+
+
+.error-message {
+    color:
+        #d52f68;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+}
+
+
+.unlock-bottom {
+    margin-top:
+        30px;
+
+    font-size:
+        12px;
+
+    opacity:
+        0.6;
+}
+
+
+.tape {
+    width:
+        90px;
+
+    height:
+        28px;
+
+    position:
+        absolute;
+
+    background:
+        rgba(
+            255,
+            231,
+            133,
+            0.85
+        );
+}
+
+
+.tape-left {
+    top:
+        -13px;
+
+    left:
+        -25px;
+
+    transform:
+        rotate(-25deg);
+}
+
+
+.tape-right {
+    top:
+        -13px;
+
+    right:
+        -25px;
+
+    transform:
+        rotate(25deg);
+}
+
+/* =========================================
+   UNLOCK BACKGROUND DECORATIONS
+========================================= */
+
+.unlock-background {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+.unlock-container {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+.unlock-decoration {
+    position: absolute;
+
+    display: block;
+
+    color: var(--pink-400);
+
+    opacity: 0.45;
+
+    font-family: 'Fredoka', sans-serif;
+
+    user-select: none;
+
+    animation:
+        unlockDecorationFloat
+        4s ease-in-out
+        infinite;
+}
+
+
+/* LEFT TOP HEART */
+.decoration-1 {
+    left: 8%;
+    top: 20%;
+
+    font-size: 34px;
+
+    transform: rotate(-12deg);
+}
+
+
+/* RIGHT TOP STAR */
+.decoration-2 {
+    right: 10%;
+    top: 17%;
+
+    color: #e7c64b;
+
+    font-size: 28px;
+
+    animation-delay: 0.7s;
+}
+
+
+/* RIGHT BOTTOM HEART */
+.decoration-3 {
+    right: 8%;
+    bottom: 18%;
+
+    font-size: 30px;
+
+    transform: rotate(12deg);
+
+    animation-delay: 1.4s;
+}
+
+
+/* LEFT BOTTOM SPARKLE */
+.decoration-4 {
+    left: 11%;
+    bottom: 20%;
+
+    color: #b69af7;
+
+    font-size: 25px;
+
+    animation-delay: 2s;
+}
+
+
+/* FLOATING EFFECT */
+@keyframes unlockDecorationFloat {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -12px;
+    }
+
+}
+
+/* =========================================
+   FLOATING BACKGROUND
+========================================= */
+
+.floating-heart,
+.floating-star {
+    position:
+        fixed;
+
+    z-index:
+        -1;
+
+    opacity:
+        0.3;
+
+    animation:
+        float
+        5s ease-in-out
+        infinite;
+}
+
+
+.heart-1 {
+    left:
+        5%;
+
+    top:
+        25%;
+
+    color:
+        var(--pink-500);
+
+    font-size:
+        35px;
+}
+
+
+.heart-2 {
+    right:
+        6%;
+
+    top:
+        40%;
+
+    color:
+        var(--pink-500);
+
+    font-size:
+        26px;
+
+    animation-delay:
+        1s;
+}
+
+
+.heart-3 {
+    left:
+        12%;
+
+    bottom:
+        10%;
+
+    color:
+        var(--pink-400);
+
+    animation-delay:
+        2s;
+}
+
+
+.star-1 {
+    right:
+        15%;
+
+    top:
+        15%;
+
+    color:
+        #dfb600;
+
+    font-size:
+        25px;
+}
+
+
+.star-2 {
+    left:
+        18%;
+
+    top:
+        60%;
+
+    color:
+        #9671f5;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    padding:
+        50px 20px;
+
+    text-align:
+        center;
+
+    background:
+        var(--pink-100);
+
+    border-top:
+        3px solid
+        var(--dark);
+
+    font-weight:
+        800;
+}
+
+
+.footer-small {
+    font-size:
+        12px;
+
+    opacity:
+        0.6;
+}
+
+
+/* =========================================
+   ORIGINAL ANIMATIONS
+========================================= */
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-15px);
+    }
+
+}
+
+
+@keyframes cardEntrance {
+
+    from {
+        opacity:
+            0;
+
+        transform:
+            translateY(40px)
+            scale(0.95);
+    }
+
+    to {
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================
+   MAIN MOBILE
+========================================= */
+
+@media (max-width: 850px) {
+
+    .hero {
+        grid-template-columns:
+            1fr;
+
+        padding-top:
+            50px;
+
+        text-align:
+            center;
+    }
+
+
+    .hero-description {
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+    }
+
+
+    .hero-buttons {
+        justify-content:
+            center;
+    }
+
+
+    .hero-visual {
+        margin-bottom:
+            50px;
+    }
+
+
+    .adventure-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .special-card {
+        grid-column:
+            span 1;
+    }
+
+
+    .nav-menu {
+        display:
+            none;
+
+        position:
+            absolute;
+
+        top:
+            80px;
+
+        left:
+            0;
+
+        right:
+            0;
+
+        padding:
+            15px;
+
+        flex-direction:
+            column;
+
+        background:
+            white;
+
+        border:
+            var(--border);
+
+        border-radius:
+            18px;
+    }
+
+
+    .nav-menu.show {
+        display:
+            flex;
+    }
+
+
+    .mobile-menu-button {
+        display:
+            block;
+
+        margin-right:
+            10px;
+
+        background:
+            transparent;
+
+        border:
+            none;
+
+        cursor:
+            pointer;
+
+        font-size:
+            25px;
+    }
+
+
+    .music-toggle {
+        margin-left:
+            0;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .unlock-card {
+        padding:
+            35px 22px;
+    }
+
+
+    .unlock-card h1 {
+        font-size:
+            35px;
+    }
+
+
+    .hero h1 {
+        font-size:
+            52px;
+    }
+
+
+    .photo-stack {
+        width:
+            300px;
+
+        height:
+            380px;
+    }
+
+
+    .polaroid {
+        width:
+            230px;
+    }
+
+
+    .music-player {
+        width:
+            calc(100% - 30px);
+
+        right:
+            15px;
+    }
+
+}
+
+/* =========================================
+   RELATIONSHIP JOURNAL QUIZ
+========================================= */
+
+.hidden {
+    display: none !important;
+}
+
+.journal-quiz {
+    width: min(920px, calc(100% - 40px));
+    min-height: 720px;
+    margin: 75px auto 120px;
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.journal-intro {
+    max-width: 720px;
+    margin: auto;
+    text-align: center;
+
+    animation: journalFadeIn 0.7s ease;
+}
+
+.journal-stars {
+    margin-bottom: 25px;
+
+    font-size: 26px;
+    letter-spacing: 10px;
+
+    animation: journalFloat 3s ease-in-out infinite;
+}
+
+.journal-intro h1 {
+    margin: 20px 0;
+
+    font-family: 'Fredoka', sans-serif;
+
+    font-size: clamp(50px, 8vw, 80px);
+
+    line-height: 0.95;
+    letter-spacing: -2px;
+}
+
+.journal-intro h1 span {
+    display: block;
+
+    color: var(--pink-500);
+
+    transform: rotate(-2deg);
+}
+
+.journal-intro > p {
+    max-width: 610px;
+
+    margin: 25px auto;
+
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.journal-note {
+    max-width: 550px;
+
+    margin: 35px auto;
+
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    text-align: left;
+
+    background: white;
+
+    border: var(--border);
+
+    border-radius: 18px;
+
+    box-shadow:
+        6px 6px 0 rgba(60, 38, 51, 0.12);
+
+    transform: rotate(-1deg);
+}
+
+.journal-note span {
+    font-size: 34px;
+}
+
+.journal-note p {
+    margin: 0;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   START BUTTON
+========================================= */
+
+.journal-start-button {
+    padding: 15px 25px;
+
+    background: var(--pink-400);
+
+    border: var(--border);
+
+    border-radius: 14px;
+
+    box-shadow:
+        5px 5px 0 var(--dark);
+
+    cursor: pointer;
+
+    font-weight: 900;
+    font-size: 16px;
+
+    transition: 0.2s ease;
+}
+
+.journal-start-button:hover {
+    transform:
+        translate(-3px, -3px);
+
+    box-shadow:
+        8px 8px 0 var(--dark);
+}
+
+.journal-start-button:active {
+    transform:
+        translate(3px, 3px);
+
+    box-shadow: none;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.relationship-form {
+    animation:
+        journalFadeIn
+        0.5s ease;
+}
+
+
+/* =========================================
+   QUESTIONS
+========================================= */
+
+.journal-question {
+    display: none;
+}
+
+.journal-question.active-question {
+    display: block;
+
+    animation:
+        journalQuestionEnter
+        0.55s ease;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.journal-progress-info {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.journal-progress {
+    width: 100%;
+
+    height: 15px;
+
+    margin-bottom: 28px;
+
+    overflow: hidden;
+
+    background: white;
+
+    border: 2px solid var(--dark);
+
+    border-radius: 100px;
+}
+
+.journal-progress-bar {
+    height: 100%;
+
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            var(--pink-400),
+            var(--pink-400) 10px,
+            var(--pink-300) 10px,
+            var(--pink-300) 20px
+        );
+
+    transition:
+        width
+        0.4s ease;
+}
+
+
+/* =========================================
+   QUESTION CARD
+========================================= */
+
+.journal-question-card {
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        clamp(35px, 7vw, 70px);
+
+    text-align: center;
+
+    background: white;
+
+    border: var(--border);
+
+    border-radius: 30px;
+
+    box-shadow:
+        10px 12px 0 rgba(60, 38, 51, 0.1);
+}
+
+.journal-question-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 110px;
+    height: 30px;
+
+    top: -14px;
+    left: 50%;
+
+    background:
+        rgba(255, 228, 125, 0.9);
+
+    transform:
+        translateX(-50%)
+        rotate(-3deg);
+}
+
+.journal-question-card::after {
+    content: "♥";
+
+    position: absolute;
+
+    right: -20px;
+    bottom: -55px;
+
+    color: var(--pink-100);
+
+    font-size: 150px;
+
+    transform:
+        rotate(-15deg);
+
+    z-index: 0;
+}
+
+.journal-question-card > * {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* =========================================
+   EMOJI + CATEGORY
+========================================= */
+
+.journal-emoji {
+    display: block;
+
+    margin: 10px 0 15px;
+
+    font-size: 53px;
+
+    animation:
+        journalFloat
+        3s ease-in-out infinite;
+}
+
+.journal-category {
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    color: var(--pink-600);
+
+    background: var(--pink-100);
+
+    border-radius: 100px;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   QUESTION TITLE
+========================================= */
+
+.journal-question-card h2 {
+    max-width: 720px;
+
+    margin: 22px auto 30px;
+
+    font-family: 'Fredoka', sans-serif;
+
+    font-size:
+        clamp(32px, 5vw, 48px);
+
+    line-height: 1.2;
+}
+
+
+/* =========================================
+   TEXTAREA
+========================================= */
+
+.journal-question-card textarea {
+    width: 100%;
+
+    min-height: 190px;
+
+    padding: 20px;
+
+    resize: vertical;
+
+    color: var(--dark);
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #fffafc 0,
+            #fffafc 34px,
+            #f9d9e8 35px
+        );
+
+    border:
+        3px solid
+        var(--dark);
+
+    border-radius: 18px;
+
+    outline: none;
+
+    font-family:
+        'DM Sans',
+        sans-serif;
+
+    font-size: 16px;
+
+    line-height: 35px;
+
+    transition:
+        box-shadow 0.2s,
+        transform 0.2s,
+        border-color 0.2s;
+}
+
+.journal-question-card textarea:focus {
+    border-color:
+        var(--pink-500);
+
+    box-shadow:
+        0 0 0 6px
+        var(--pink-100);
+
+    transform:
+        translateY(-2px);
+}
+
+.journal-question-card textarea::placeholder {
+    color:
+        rgba(60, 38, 51, 0.45);
+}
+
+
+/* =========================================
+   TEXT COUNTER
+========================================= */
+
+.journal-character-count {
+    margin-top: 7px;
+
+    text-align: right;
+
+    color:
+        rgba(60, 38, 51, 0.55);
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.journal-input-error {
+    border-color:
+        #d8466c !important;
+
+    box-shadow:
+        0 0 0 6px
+        rgba(216, 70, 108, 0.12);
+
+    animation:
+        journalShake
+        0.4s ease;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.journal-navigation {
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+
+/* NEXT */
+
+.journal-next-button {
+    padding: 13px 20px;
+
+    margin-top: 25px;
+
+    background:
+        var(--pink-400);
+
+    border:
+        2px solid
+        var(--dark);
+
+    border-radius: 13px;
+
+    box-shadow:
+        4px 4px 0
+        var(--dark);
+
+    cursor: pointer;
+
+    font-weight: 900;
+
+    transition:
+        0.2s ease;
+}
+
+.journal-navigation
+.journal-next-button {
+    margin-top: 0;
+}
+
+.journal-next-button:hover {
+    transform:
+        translate(-2px, -2px);
+
+    box-shadow:
+        6px 6px 0
+        var(--dark);
+}
+
+
+/* BACK */
+
+.journal-back-button {
+    padding: 13px 20px;
+
+    background: white;
+
+    border:
+        2px solid
+        var(--dark);
+
+    border-radius: 13px;
+
+    cursor: pointer;
+
+    font-weight: 900;
+
+    transition:
+        0.2s ease;
+}
+
+.journal-back-button:hover {
+    background:
+        var(--pink-100);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* SUBMIT */
+
+.journal-submit-button {
+    padding: 13px 20px;
+
+    background:
+        var(--pink-400);
+
+    border:
+        2px solid
+        var(--dark);
+
+    border-radius: 13px;
+
+    box-shadow:
+        4px 4px 0
+        var(--dark);
+
+    cursor: pointer;
+
+    font-weight: 900;
+
+    transition:
+        0.2s ease;
+}
+
+.journal-submit-button:hover {
+    transform:
+        translate(-2px, -2px);
+
+    box-shadow:
+        6px 6px 0
+        var(--dark);
+}
+
+
+/* =========================================
+   FINAL QUESTION
+========================================= */
+
+.final-question-card {
+    background:
+        linear-gradient(
+            135deg,
+            white,
+            #fff2f8
+        );
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes journalFadeIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+@keyframes journalQuestionEnter {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(30px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1);
+    }
+
+}
+
+
+@keyframes journalFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-9px);
+    }
+
+}
+
+
+@keyframes journalShake {
+
+    0%,
+    100% {
+        transform:
+            translateX(0);
+    }
+
+    25% {
+        transform:
+            translateX(-8px);
+    }
+
+    50% {
+        transform:
+            translateX(8px);
+    }
+
+    75% {
+        transform:
+            translateX(-5px);
+    }
+
+}
+
+/* =========================================
+   MEMORY LANE
+========================================= */
+
+.memory-hero {
+    width: min(1160px, calc(100% - 40px));
+    margin: 70px auto 80px;
+
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+
+    gap: 50px;
+    align-items: center;
+
+    position: relative;
+}
+
+.memory-hero h1 {
+    font-family: 'Fredoka', sans-serif;
+
+    font-size: clamp(50px, 7vw, 85px);
+
+    line-height: 1;
+
+    margin: 18px 0 20px;
+}
+
+.memory-hero h1 span {
+    display: inline-block;
+
+    animation:
+        cameraBounce
+        2.5s ease-in-out
+        infinite;
+}
+
+.memory-hero p {
+    max-width: 680px;
+
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.memory-hero-note {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 12px 18px;
+
+    background: #fff2a8;
+
+    border: 2px dashed var(--dark);
+
+    border-radius: 12px;
+
+    font-weight: 800;
+
+    transform: rotate(-1deg);
+}
+
+
+/* =========================================
+   MEMORY HERO CHARACTERS
+========================================= */
+
+.memory-hero-characters {
+    min-height: 330px;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.memory-character {
+    position: absolute;
+
+    max-width: 210px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            7px
+            10px
+            0
+            rgba(60, 38, 51, 0.12)
+        );
+
+    transition:
+        0.3s ease;
+}
+
+.memory-character:hover {
+    transform:
+        scale(1.08)
+        rotate(3deg);
+}
+
+.minion-memory {
+    left: 40px;
+
+    bottom: 20px;
+
+    transform:
+        rotate(-7deg);
+
+    animation:
+        memoryCharacterFloat
+        4s ease-in-out
+        infinite;
+}
+
+.nailoong-memory {
+    right: 35px;
+
+    top: 10px;
+
+    transform:
+        rotate(7deg);
+
+    animation:
+        memoryCharacterFloat
+        4.5s ease-in-out
+        infinite
+        0.5s;
+}
+
+
+/* =========================================
+   MEMORY TIMELINE
+========================================= */
+
+.memory-lane {
+    width:
+        min(
+            1100px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto;
+
+    position:
+        relative;
+}
+
+.memory-lane::before {
+    content: "";
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        4px;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            var(--pink-300) 0 16px,
+            transparent 16px 29px
+        );
+
+    transform:
+        translateX(-50%);
+
+    opacity:
+        0.6;
+
+    z-index:
+        -1;
+}
+
+.memory-entry {
+    margin:
+        0 0 110px;
+
+    position:
+        relative;
+}
+
+.memory-date-badge {
+    width:
+        fit-content;
+
+    margin:
+        0 auto 30px;
+
+    padding:
+        8px 18px;
+
+    background:
+        var(--pink-300);
+
+    border:
+        var(--border);
+
+    border-radius:
+        100px;
+
+    box-shadow:
+        4px 4px 0
+        var(--dark);
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+}
+
+
+/* =========================================
+   MEMORY GRID
+========================================= */
+
+.memory-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.9fr)
+        minmax(0, 1.1fr);
+
+    align-items: center;
+
+    gap: 60px;
+}
+
+.reverse-memory
+.memory-photo-area {
+    order: 2;
+}
+
+.reverse-memory
+.memory-story-card {
+    order: 1;
+}
+
+
+/* =========================================
+   MEMORY POLAROIDS
+========================================= */
+
+.memory-photo-area {
+    min-height: 430px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+}
+
+.memory-photo-area::before {
+    content: "♥";
+
+    position:
+        absolute;
+
+    top:
+        5px;
+
+    right:
+        30px;
+
+    color:
+        var(--pink-400);
+
+    font-size:
+        36px;
+
+    transform:
+        rotate(15deg);
+}
+
+.memory-polaroid {
+    width:
+        min(
+            340px,
+            90%
+        );
+
+    padding:
+        16px 16px 30px;
+
+    position:
+        relative;
+
+    background:
+        white;
+
+    border:
+        var(--border);
+
+    box-shadow:
+        12px 14px 0
+        rgba(60, 38, 51, 0.12);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.memory-polaroid::before {
+    content: "";
+
+    position:
+        absolute;
+
+    width:
+        105px;
+
+    height:
+        27px;
+
+    top:
+        -15px;
+
+    left:
+        50%;
+
+    background:
+        rgba(255, 229, 130, 0.8);
+
+    transform:
+        translateX(-50%)
+        rotate(-4deg);
+
+    z-index:
+        5;
+}
+
+.memory-polaroid:hover {
+    transform:
+        rotate(0deg)
+        scale(1.04);
+
+    box-shadow:
+        15px 18px 0
+        rgba(60, 38, 51, 0.14);
+}
+
+.rotate-left {
+    transform:
+        rotate(-5deg);
+}
+
+.rotate-right {
+    transform:
+        rotate(5deg);
+}
+
+.memory-polaroid img {
+    width:
+        100%;
+
+    aspect-ratio:
+        1 / 1;
+
+    object-fit:
+        cover;
+
+    display:
+        block;
+
+    border:
+        2px solid
+        var(--dark);
+}
+
+.memory-photo-placeholder {
+    width:
+        100%;
+
+    aspect-ratio:
+        1 / 1;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink-100),
+            var(--pink-300)
+        );
+
+    border:
+        2px solid
+        var(--dark);
+
+    font-size:
+        70px;
+}
+
+.polaroid-caption {
+    margin:
+        18px 0 0;
+
+    text-align:
+        center;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        18px;
+}
+
+
+/* =========================================
+   MEMORY STORY CARD
+========================================= */
+
+.memory-story-card {
+    padding:
+        35px;
+
+    position:
+        relative;
+
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.93),
+            rgba(255, 255, 255, 0.93)
+        ),
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0 29px,
+            rgba(249, 79, 148, 0.08) 29px 30px
+        );
+
+    border:
+        var(--border);
+
+    border-radius:
+        20px;
+
+    box-shadow:
+        8px 10px 0
+        rgba(60, 38, 51, 0.09);
+}
+
+.memory-story-card::before {
+    content: "✦";
+
+    position:
+        absolute;
+
+    top:
+        -18px;
+
+    right:
+        -10px;
+
+    color:
+        #ffc938;
+
+    font-size:
+        35px;
+
+    transform:
+        rotate(15deg);
+}
+
+.memory-small-title {
+    display:
+        block;
+
+    margin-bottom:
+        8px;
+
+    color:
+        var(--pink-600);
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2.5px;
+}
+
+.memory-story-card h2,
+.special-memory-content h2 {
+    margin:
+        5px 0 7px;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            45px
+        );
+}
+
+.memory-date-text {
+    margin-top:
+        0;
+
+    color:
+        var(--pink-600);
+
+    font-size:
+        13px;
+
+    font-weight:
+        900;
+}
+
+.memory-story-card p,
+.special-memory-content p {
+    line-height:
+        1.85;
+}
+
+.memory-note {
+    margin-top:
+        25px;
+
+    padding:
+        16px 18px;
+
+    background:
+        var(--pink-100);
+
+    border-left:
+        5px solid
+        var(--pink-500);
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        17px;
+
+    transform:
+        rotate(-0.7deg);
+}
+
+
+/* =========================================
+   SPECIAL MEMORY
+========================================= */
+
+.special-memory-entry {
+    padding:
+        20px 0 30px;
+}
+
+.special-memory-label {
+    width:
+        fit-content;
+
+    margin:
+        0 auto 30px;
+
+    padding:
+        10px 20px;
+
+    background:
+        #fff0a6;
+
+    border:
+        var(--border);
+
+    border-radius:
+        100px;
+
+    box-shadow:
+        4px 4px 0
+        var(--dark);
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+}
+
+.special-memory-card {
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1.1fr);
+
+    gap:
+        0;
+
+    overflow:
+        hidden;
+
+    background:
+        var(--pink-200);
+
+    border:
+        var(--border);
+
+    border-radius:
+        28px;
+
+    box-shadow:
+        12px 14px 0
+        rgba(60, 38, 51, 0.13);
+}
+
+.special-memory-photo {
+    min-height:
+        500px;
+
+    position:
+        relative;
+
+    background:
+        var(--pink-100);
+
+    border-right:
+        var(--border);
+}
+
+.special-memory-photo img {
+    width:
+        100%;
+
+    height:
+        100%;
+
+    min-height:
+        500px;
+
+    object-fit:
+        cover;
+
+    display:
+        block;
+}
+
+.special-photo-placeholder {
+    width:
+        100%;
+
+    height:
+        100%;
+
+    min-height:
+        500px;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff3f9,
+            #ffb8d7
+        );
+
+    font-size:
+        100px;
+}
+
+.special-memory-content {
+    padding:
+        clamp(
+            35px,
+            5vw,
+            65px
+        );
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+}
+
+.big-note {
+    background:
+        white;
+
+    border:
+        2px dashed
+        var(--dark);
+}
+
+
+/* =========================================
+   MEMORY ENDING
+========================================= */
+
+.memory-ending {
+    width:
+        min(
+            850px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        30px auto 120px;
+}
+
+.memory-ending-card {
+    padding:
+        clamp(
+            40px,
+            7vw,
+            80px
+        );
+
+    position:
+        relative;
+
+    text-align:
+        center;
+
+    background:
+        white;
+
+    border:
+        var(--border);
+
+    border-radius:
+        30px;
+
+    box-shadow:
+        12px 12px 0
+        var(--pink-300);
+}
+
+.memory-ending-card::before,
+.memory-ending-card::after {
+    content: "";
+
+    position:
+        absolute;
+
+    width:
+        95px;
+
+    height:
+        28px;
+
+    top:
+        -13px;
+
+    background:
+        rgba(
+            255,
+            228,
+            121,
+            0.82
+        );
+}
+
+.memory-ending-card::before {
+    left:
+        -28px;
+
+    transform:
+        rotate(-25deg);
+}
+
+.memory-ending-card::after {
+    right:
+        -28px;
+
+    transform:
+        rotate(25deg);
+}
+
+.memory-ending-stars {
+    margin-bottom:
+        18px;
+
+    color:
+        var(--pink-500);
+
+    font-size:
+        25px;
+
+    letter-spacing:
+        8px;
+}
+
+.memory-ending-card h2 {
+    margin:
+        18px 0;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            55px
+        );
+}
+
+.memory-ending-card p {
+    max-width:
+        620px;
+
+    margin:
+        0 auto 30px;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.9;
+}
+
+
+/* =========================================
+   MEMORY SCROLL REVEAL
+========================================= */
+
+.reveal-memory {
+    opacity:
+        0;
+
+    transform:
+        translateY(70px)
+        scale(0.97);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal-memory.memory-visible {
+    opacity:
+        1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================
+   MEMORY ANIMATIONS
+========================================= */
+
+@keyframes cameraBounce {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(0);
+    }
+
+    50% {
+        transform:
+            translateY(-8px)
+            rotate(7deg);
+    }
+
+}
+
+@keyframes memoryCharacterFloat {
+
+    0%,
+    100% {
+        translate:
+            0 0;
+    }
+
+    50% {
+        translate:
+            0 -16px;
+    }
+
+}
+
+
+/* =========================================
+   MEMORY MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .memory-hero {
+        grid-template-columns:
+            1fr;
+
+        text-align:
+            center;
+    }
+
+    .memory-hero p {
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+    }
+
+    .memory-hero-characters {
+        min-height:
+            300px;
+    }
+
+    .memory-grid {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            20px;
+    }
+
+    .reverse-memory
+    .memory-photo-area,
+    .reverse-memory
+    .memory-story-card {
+        order:
+            initial;
+    }
+
+    .memory-photo-area {
+        min-height:
+            390px;
+    }
+
+    .memory-lane::before {
+        left:
+            15px;
+    }
+
+    .special-memory-card {
+        grid-template-columns:
+            1fr;
+    }
+
+    .special-memory-photo {
+        border-right:
+            none;
+
+        border-bottom:
+            var(--border);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .memory-hero {
+        margin-top:
+            45px;
+    }
+
+    .memory-hero h1 {
+        font-size:
+            50px;
+    }
+
+    .memory-character {
+        max-width:
+            155px;
+    }
+
+    .minion-memory {
+        left:
+            5px;
+    }
+
+    .nailoong-memory {
+        right:
+            5px;
+    }
+
+    .memory-story-card {
+        padding:
+            25px 20px;
+    }
+
+    .memory-entry {
+        margin-bottom:
+            80px;
+    }
+
+    .memory-date-badge {
+        margin-left:
+            30px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .journal-quiz {
+        margin-top: 45px;
+    }
+
+    .journal-intro h1 {
+        font-size: 48px;
+    }
+
+    .journal-question-card {
+        padding:
+            40px 20px 30px;
+    }
+
+    .journal-question-card h2 {
+        font-size: 30px;
+    }
+
+    .journal-question-card textarea {
+        min-height: 220px;
+    }
+
+    .journal-navigation {
+        flex-direction:
+            column-reverse;
+    }
+
+    .journal-navigation button {
+        width: 100%;
+    }
+
+    /* =========================================
+   10 THINGS I LOVE ABOUT YOU
+========================================= */
+
+.love-reasons-page {
+    width: min(1100px, calc(100% - 40px));
+    margin: 70px auto 120px;
+}
+
+.love-reasons-header {
+    max-width: 760px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.love-sparkles {
+    margin-bottom: 20px;
+    font-size: 27px;
+    letter-spacing: 10px;
+    animation: journalFloat 3s ease-in-out infinite;
+}
+
+.love-reasons-header h1 {
+    margin: 20px 0;
+
+    font-family: 'Fredoka', sans-serif;
+
+    font-size: clamp(50px, 8vw, 82px);
+
+    line-height: 0.95;
+}
+
+.love-reasons-header h1 span {
+    display: block;
+    color: var(--pink-500);
+    transform: rotate(-2deg);
+}
+
+.love-reasons-header p {
+    max-width: 620px;
+    margin: 20px auto;
+
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.love-instruction {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 11px 18px;
+
+    background: #fff2a8;
+
+    border: 2px dashed var(--dark);
+
+    border-radius: 12px;
+
+    font-weight: 800;
+
+    transform: rotate(-1deg);
+}
+
+
+/* =========================================
+   LOVE PROGRESS
+========================================= */
+
+.love-progress-wrap {
+    max-width: 720px;
+    margin: 0 auto 45px;
+}
+
+.love-progress-text {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.love-progress-track {
+    height: 15px;
+
+    overflow: hidden;
+
+    background: white;
+
+    border: 2px solid var(--dark);
+
+    border-radius: 100px;
+}
+
+.love-progress-fill {
+    width: 0;
+    height: 100%;
+
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            var(--pink-400),
+            var(--pink-400) 10px,
+            var(--pink-300) 10px,
+            var(--pink-300) 20px
+        );
+
+    transition: width 0.4s ease;
+}
+
+
+/* =========================================
+   LOVE CARDS GRID
+========================================= */
+
+.love-reasons-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
+
+/* =========================================
+   LOVE CARD
+========================================= */
+
+.love-reason-card {
+    min-height: 330px;
+
+    position: relative;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    perspective: 1000px;
+}
+
+.love-card-front,
+.love-card-back {
+    width: 100%;
+    min-height: 330px;
+
+    padding: 35px;
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    backface-visibility: hidden;
+
+    border: var(--border);
+
+    border-radius: 25px;
+
+    transition:
+        transform 0.7s ease,
+        box-shadow 0.3s ease;
+}
+
+.love-card-front {
+    background:
+        linear-gradient(
+            135deg,
+            #fff9fc,
+            #ffe3f0
+        );
+
+    box-shadow:
+        8px 9px 0 rgba(60, 38, 51, 0.11);
+
+    transform: rotateY(0deg);
+}
+
+.love-card-back {
+    background: white;
+
+    box-shadow:
+        8px 9px 0 var(--pink-300);
+
+    transform: rotateY(180deg);
+}
+
+.love-reason-card.opened
+.love-card-front {
+    transform: rotateY(-180deg);
+}
+
+.love-reason-card.opened
+.love-card-back {
+    transform: rotateY(0deg);
+}
+
+
+/* =========================================
+   LOVE FRONT
+========================================= */
+
+.love-number {
+    position: absolute;
+
+    top: 18px;
+    right: 20px;
+
+    color: var(--pink-600);
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.love-heart-icon {
+    font-size: 70px;
+
+    margin-bottom: 15px;
+
+    animation:
+        loveHeartBeat
+        2s ease-in-out infinite;
+}
+
+.love-card-front h2 {
+    margin: 5px 0;
+
+    font-family: 'Fredoka', sans-serif;
+
+    font-size: 30px;
+}
+
+.love-card-front p {
+    margin: 5px 0;
+
+    opacity: 0.6;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   LOVE BACK
+========================================= */
+
+.love-small-title {
+    color: var(--pink-600);
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.love-card-back h3 {
+    margin: 15px 0 12px;
+
+    font-family: 'Fredoka', sans-serif;
+
+    font-size: 31px;
+
+    color: var(--pink-500);
+}
+
+.love-card-back p {
+    max-width: 420px;
+
+    margin: 0;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+.love-reason-final
+.love-card-front {
+    background:
+        linear-gradient(
+            135deg,
+            #ffd8e9,
+            #fff0a6
+        );
+}
+
+
+/* =========================================
+   FINAL MESSAGE
+========================================= */
+
+.love-final-message {
+    margin-top: 80px;
+
+    animation:
+        journalFadeIn
+        0.7s ease;
+}
+
+.love-final-card {
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    padding:
+        clamp(40px, 7vw, 75px);
+
+    text-align: center;
+
+    background: white;
+
+    border: var(--border);
+
+    border-radius: 30px;
+
+    box-shadow:
+        12px 12px 0 var(--pink-300);
+
+    position: relative;
+}
+
+.love-final-card::before {
+    content: "";
+
+    width: 100px;
+    height: 28px;
+
+    position: absolute;
+
+    top: -14px;
+    left: 50%;
+
+    background:
+        rgba(255, 228, 121, 0.85);
+
+    transform:
+        translateX(-50%)
+        rotate(-3deg);
+}
+
+.love-final-sparkles {
+    margin-bottom: 20px;
+
+    color: var(--pink-500);
+
+    font-size: 25px;
+
+    letter-spacing: 9px;
+}
+
+.love-final-card h2 {
+    margin: 20px 0;
+
+    font-family: 'Fredoka', sans-serif;
+
+    font-size: clamp(40px, 6vw, 62px);
+
+    line-height: 1;
+}
+
+.love-final-card h2 span {
+    display: block;
+
+    color: var(--pink-500);
+}
+
+.love-final-card p {
+    max-width: 580px;
+
+    margin: 15px auto;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+.love-final-card .primary-button {
+    margin-top: 25px;
+}
+
+
+/* =========================================
+   LOVE ANIMATIONS
+========================================= */
+
+@keyframes loveHeartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+}
+
+
+/* =========================================
+   LOVE MOBILE
+========================================= */
+
+@media (max-width: 750px) {
+
+    .love-reasons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .love-reason-card {
+        min-height: 300px;
+    }
+
+    .love-card-front,
+    .love-card-back {
+        min-height: 300px;
+    }
+
+}
+/* =========================================
+   10 THINGS I LOVE ABOUT YOU
+========================================= */
+
+.love-reasons-page {
+    width: min(1100px, calc(100% - 40px));
+    margin: 70px auto 120px;
+}
+
+
+/* HEADER */
+
+.love-reasons-header {
+    max-width: 760px;
+
+    margin:
+        0 auto 60px;
+
+    text-align:
+        center;
+}
+
+.love-sparkles {
+    margin-bottom:
+        20px;
+
+    font-size:
+        27px;
+
+    letter-spacing:
+        10px;
+
+    animation:
+        loveFloat
+        3s ease-in-out
+        infinite;
+}
+
+.love-reasons-header h1 {
+    margin:
+        20px 0;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        clamp(
+            50px,
+            8vw,
+            82px
+        );
+
+    line-height:
+        0.95;
+}
+
+.love-reasons-header h1 span {
+    display:
+        block;
+
+    color:
+        var(--pink-500);
+
+    transform:
+        rotate(-2deg);
+}
+
+.love-reasons-header p {
+    max-width:
+        620px;
+
+    margin:
+        20px auto;
+
+    font-size:
+        18px;
+
+    line-height:
+        1.8;
+}
+
+.love-instruction {
+    display:
+        inline-block;
+
+    margin-top:
+        15px;
+
+    padding:
+        11px 18px;
+
+    background:
+        #fff2a8;
+
+    border:
+        2px dashed
+        var(--dark);
+
+    border-radius:
+        12px;
+
+    font-weight:
+        800;
+
+    transform:
+        rotate(-1deg);
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.love-progress-wrap {
+    max-width:
+        720px;
+
+    margin:
+        0 auto 45px;
+}
+
+.love-progress-text {
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        8px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+}
+
+.love-progress-track {
+    height:
+        15px;
+
+    overflow:
+        hidden;
+
+    background:
+        white;
+
+    border:
+        2px solid
+        var(--dark);
+
+    border-radius:
+        100px;
+}
+
+.love-progress-fill {
+    width:
+        0;
+
+    height:
+        100%;
+
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            var(--pink-400),
+            var(--pink-400) 10px,
+            var(--pink-300) 10px,
+            var(--pink-300) 20px
+        );
+
+    transition:
+        width
+        0.4s ease;
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.love-reasons-grid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap:
+        26px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.love-reason-card {
+    width:
+        100%;
+
+    min-height:
+        350px;
+
+    position:
+        relative;
+
+    padding:
+        0;
+
+    background:
+        transparent;
+
+    border:
+        none;
+
+    cursor:
+        pointer;
+
+    perspective:
+        1200px;
+}
+
+
+/* =========================================
+   FRONT + BACK
+========================================= */
+
+.love-card-front,
+.love-card-back {
+    width:
+        100%;
+
+    height:
+        100%;
+
+    min-height:
+        350px;
+
+    padding:
+        40px;
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    backface-visibility:
+        hidden;
+
+    -webkit-backface-visibility:
+        hidden;
+
+    border:
+        var(--border);
+
+    border-radius:
+        26px;
+
+    transition:
+        transform
+        0.7s
+        cubic-bezier(
+            0.2,
+            0.75,
+            0.25,
+            1
+        );
+}
+
+
+/* FRONT */
+
+.love-card-front {
+    background:
+        linear-gradient(
+            135deg,
+            #fff9fc,
+            #ffe3f0
+        );
+
+    box-shadow:
+        8px 9px 0
+        rgba(
+            60,
+            38,
+            51,
+            0.11
+        );
+
+    transform:
+        rotateY(0deg);
+}
+
+
+/* BACK */
+
+.love-card-back {
+    background:
+        white;
+
+    box-shadow:
+        8px 9px 0
+        var(--pink-300);
+
+    transform:
+        rotateY(180deg);
+}
+
+
+/* FLIPPED */
+
+.love-reason-card.opened
+.love-card-front {
+    transform:
+        rotateY(-180deg);
+}
+
+.love-reason-card.opened
+.love-card-back {
+    transform:
+        rotateY(0deg);
+}
+
+
+/* =========================================
+   CARD FRONT CONTENT
+========================================= */
+
+.love-number {
+    position:
+        absolute;
+
+    top:
+        20px;
+
+    right:
+        22px;
+
+    color:
+        var(--pink-600);
+
+    font-size:
+        13px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+}
+
+.love-heart-icon {
+    margin-bottom:
+        15px;
+
+    font-size:
+        70px;
+
+    animation:
+        loveHeartBeat
+        2s ease-in-out
+        infinite;
+}
+
+.love-card-front h2 {
+    margin:
+        5px 0;
+
+    color:
+        var(--dark);
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        31px;
+}
+
+.love-card-front p {
+    margin:
+        7px 0 0;
+
+    font-size:
+        13px;
+
+    opacity:
+        0.55;
+}
+
+
+/* =========================================
+   CARD BACK CONTENT
+========================================= */
+
+.love-small-title {
+    color:
+        var(--pink-600);
+
+    font-size:
+        10px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+}
+
+.love-card-back h3 {
+    margin:
+        16px 0;
+
+    color:
+        var(--pink-500);
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        clamp(
+            25px,
+            3vw,
+            34px
+        );
+
+    line-height:
+        1.15;
+}
+
+.love-card-back p {
+    max-width:
+        430px;
+
+    margin:
+        0;
+
+    color:
+        var(--dark);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.8;
+}
+
+.love-reason-final
+.love-card-front {
+    background:
+        linear-gradient(
+            135deg,
+            #ffd5e7,
+            #fff0a6
+        );
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.love-reason-card:hover
+.love-card-front {
+    box-shadow:
+        11px 12px 0
+        rgba(
+            60,
+            38,
+            51,
+            0.13
+        );
+}
+
+
+/* =========================================
+   FINAL MESSAGE
+========================================= */
+
+.love-final-message {
+    margin-top:
+        85px;
+
+    animation:
+        loveFadeIn
+        0.7s ease;
+}
+
+.love-final-card {
+    max-width:
+        760px;
+
+    margin:
+        0 auto;
+
+    padding:
+        clamp(
+            40px,
+            7vw,
+            75px
+        );
+
+    position:
+        relative;
+
+    text-align:
+        center;
+
+    background:
+        white;
+
+    border:
+        var(--border);
+
+    border-radius:
+        30px;
+
+    box-shadow:
+        12px 12px 0
+        var(--pink-300);
+}
+
+.love-final-card::before {
+    content:
+        "";
+
+    width:
+        100px;
+
+    height:
+        28px;
+
+    position:
+        absolute;
+
+    top:
+        -14px;
+
+    left:
+        50%;
+
+    background:
+        rgba(
+            255,
+            228,
+            121,
+            0.85
+        );
+
+    transform:
+        translateX(-50%)
+        rotate(-3deg);
+}
+
+.love-final-sparkles {
+    margin-bottom:
+        20px;
+
+    color:
+        var(--pink-500);
+
+    font-size:
+        25px;
+
+    letter-spacing:
+        9px;
+}
+
+.love-final-card h2 {
+    margin:
+        20px 0;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        clamp(
+            40px,
+            6vw,
+            62px
+        );
+
+    line-height:
+        1;
+}
+
+.love-final-card h2 span {
+    display:
+        block;
+
+    color:
+        var(--pink-500);
+}
+
+.love-final-card p {
+    max-width:
+        580px;
+
+    margin:
+        15px auto;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.8;
+}
+
+.love-final-card
+.primary-button {
+    margin-top:
+        25px;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes loveHeartBeat {
+
+    0%,
+    100% {
+        transform:
+            scale(1);
+    }
+
+    50% {
+        transform:
+            scale(1.12);
+    }
+
+}
+
+@keyframes loveFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-8px);
+    }
+
+}
+
+@keyframes loveFadeIn {
+
+    from {
+        opacity:
+            0;
+
+        transform:
+            translateY(30px);
+    }
+
+    to {
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 750px) {
+
+    .love-reasons-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .love-reason-card {
+        min-height:
+            330px;
+    }
+
+    .love-card-front,
+    .love-card-back {
+        min-height:
+            330px;
+
+        padding:
+            32px 25px;
+    }
+
+    .love-reasons-header h1 {
+        font-size:
+            50px;
+    }
+
+}
+/* =========================================
+   LONG DISTANCE PAGE
+========================================= */
+
+.distance-page {
+    width: 100%;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.distance-hero {
+    width: min(1100px, calc(100% - 40px));
+
+    margin: 70px auto 100px;
+
+    display: grid;
+
+    grid-template-columns:
+        0.9fr 1.1fr;
+
+    gap: 60px;
+
+    align-items: center;
+}
+
+.distance-sky {
+    min-height: 430px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #cdb9ff,
+            #ffd7e8 70%,
+            #fff6fa
+        );
+
+    border: var(--border);
+
+    border-radius: 30px;
+
+    box-shadow:
+        10px 12px 0 rgba(60, 38, 51, 0.12);
+}
+
+.distance-moon {
+    position: absolute;
+
+    top: 55px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 110px;
+
+    filter:
+        drop-shadow(
+            0 8px 15px
+            rgba(255, 255, 255, 0.4)
+        );
+
+    animation:
+        distanceMoonFloat
+        4s ease-in-out infinite;
+}
+
+.distance-star {
+    position: absolute;
+
+    color: white;
+
+    font-size: 25px;
+
+    animation:
+        distanceTwinkle
+        2s ease-in-out infinite;
+}
+
+.star-a {
+    top: 45px;
+    left: 45px;
+}
+
+.star-b {
+    top: 90px;
+    right: 55px;
+
+    animation-delay:
+        0.4s;
+}
+
+.star-c {
+    top: 190px;
+    left: 70px;
+
+    animation-delay:
+        0.8s;
+}
+
+.star-d {
+    top: 220px;
+    right: 85px;
+
+    animation-delay:
+        1.2s;
+}
+
+.star-e {
+    bottom: 70px;
+    left: 50%;
+
+    animation-delay:
+        1.6s;
+}
+
+.distance-cloud {
+    position: absolute;
+
+    font-size: 85px;
+
+    opacity: 0.85;
+}
+
+.cloud-one {
+    bottom: 30px;
+    left: -10px;
+
+    animation:
+        cloudMoveOne
+        8s ease-in-out infinite;
+}
+
+.cloud-two {
+    bottom: 70px;
+    right: -20px;
+
+    animation:
+        cloudMoveTwo
+        9s ease-in-out infinite;
+}
+
+.distance-hero-content h1 {
+    margin: 18px 0;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        clamp(
+            52px,
+            7vw,
+            85px
+        );
+
+    line-height:
+        0.95;
+}
+
+.distance-hero-content h1 span {
+    display: block;
+
+    color:
+        var(--pink-500);
+}
+
+.distance-hero-content > p {
+    max-width: 650px;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+.distance-note {
+    margin-top: 25px;
+
+    padding: 16px 18px;
+
+    display: inline-block;
+
+    background:
+        #fff0a6;
+
+    border:
+        2px dashed
+        var(--dark);
+
+    border-radius: 13px;
+
+    font-weight:
+        800;
+
+    transform:
+        rotate(-1deg);
+}
+
+
+/* =========================================
+   COMMON HEADING
+========================================= */
+
+.distance-section-heading {
+    max-width: 760px;
+
+    margin:
+        0 auto 45px;
+
+    text-align: center;
+}
+
+.distance-section-heading h2 {
+    margin:
+        15px 0;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        clamp(
+            40px,
+            6vw,
+            62px
+        );
+
+    line-height:
+        1;
+}
+
+.distance-section-heading h2 span {
+    display: block;
+
+    color:
+        var(--pink-500);
+}
+
+
+/* =========================================
+   CONNECTION
+========================================= */
+
+.distance-connection-section {
+    width:
+        min(
+            1000px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto 110px;
+}
+
+.distance-connection-card {
+    padding:
+        45px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1.5fr 1fr;
+
+    align-items:
+        center;
+
+    gap:
+        30px;
+
+    background:
+        white;
+
+    border:
+        var(--border);
+
+    border-radius:
+        28px;
+
+    box-shadow:
+        10px 11px 0
+        rgba(60, 38, 51, 0.1);
+}
+
+.distance-person {
+    text-align:
+        center;
+}
+
+.distance-avatar {
+    width:
+        100px;
+
+    height:
+        100px;
+
+    margin:
+        0 auto 15px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    background:
+        var(--pink-100);
+
+    border:
+        3px solid
+        var(--dark);
+
+    border-radius:
+        50%;
+
+    font-size:
+        45px;
+}
+
+.distance-person h3 {
+    margin:
+        5px 0;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        24px;
+}
+
+.distance-person p {
+    margin:
+        5px 0;
+
+    font-size:
+        13px;
+
+    opacity:
+        0.6;
+}
+
+.distance-line-wrap {
+    text-align:
+        center;
+}
+
+.distance-line {
+    height:
+        5px;
+
+    position:
+        relative;
+
+    background:
+        repeating-linear-gradient(
+            to right,
+            var(--pink-400) 0 15px,
+            transparent 15px 25px
+        );
+}
+
+.distance-moving-heart {
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    left:
+        0;
+
+    transform:
+        translateY(-50%);
+
+    font-size:
+        30px;
+
+    animation:
+        heartTravel
+        4s ease-in-out infinite;
+}
+
+.distance-line-text {
+    display:
+        block;
+
+    margin-top:
+        22px;
+
+    color:
+        var(--pink-600);
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        1.5px;
+}
+
+
+/* =========================================
+   WHAT I MISS
+========================================= */
+
+.distance-miss-section {
+    width:
+        min(
+            1100px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto 120px;
+}
+
+.distance-miss-grid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap:
+        22px;
+}
+
+.distance-miss-card {
+    padding:
+        30px;
+
+    background:
+        white;
+
+    border:
+        var(--border);
+
+    border-radius:
+        22px;
+
+    box-shadow:
+        7px 8px 0
+        rgba(60, 38, 51, 0.09);
+
+    transition:
+        0.25s ease;
+}
+
+.distance-miss-card:hover {
+    transform:
+        translateY(-6px)
+        rotate(-1deg);
+
+    box-shadow:
+        9px 10px 0
+        rgba(60, 38, 51, 0.13);
+}
+
+.distance-miss-icon {
+    font-size:
+        45px;
+}
+
+.distance-miss-card h3 {
+    margin:
+        17px 0 8px;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        26px;
+}
+
+.distance-miss-card p {
+    margin:
+        0;
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================================
+   SAME MOON
+========================================= */
+
+.same-moon-section {
+    width:
+        min(
+            780px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto 120px;
+}
+
+.same-moon-card {
+    padding:
+        clamp(
+            40px,
+            7vw,
+            75px
+        );
+
+    position:
+        relative;
+
+    text-align:
+        center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #eee6ff,
+            #fff6fb
+        );
+
+    border:
+        var(--border);
+
+    border-radius:
+        30px;
+
+    box-shadow:
+        12px 12px 0
+        var(--pink-300);
+}
+
+.same-moon-icon {
+    margin-bottom:
+        15px;
+
+    font-size:
+        85px;
+
+    animation:
+        distanceMoonFloat
+        4s ease-in-out infinite;
+}
+.same-moon-icon {
+    animation-name: sameMoonFloat;
+}
+
+@keyframes sameMoonFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+.same-moon-card h2 {
+    margin:
+        18px 0;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        clamp(
+            38px,
+            6vw,
+            58px
+        );
+
+    line-height:
+        1;
+}
+
+.same-moon-card h2 span {
+    display:
+        block;
+
+    color:
+        var(--pink-500);
+}
+
+.same-moon-card p {
+    max-width:
+        580px;
+
+    margin:
+        15px auto;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.8;
+}
+
+
+/* =========================================
+   FUTURE PLANS
+========================================= */
+
+.distance-future-section {
+    width:
+        min(
+            1100px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto 120px;
+}
+
+.distance-future-grid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap:
+        20px;
+}
+
+.future-card {
+    min-height:
+        180px;
+
+    padding:
+        25px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+    background:
+        white;
+
+    border:
+        var(--border);
+
+    border-radius:
+        20px;
+
+    box-shadow:
+        6px 7px 0
+        rgba(60, 38, 51, 0.09);
+
+    transition:
+        0.25s ease;
+}
+
+.future-card:hover {
+    transform:
+        translateY(-6px)
+        rotate(1deg);
+
+    background:
+        var(--pink-100);
+}
+
+.future-card span {
+    font-size:
+        45px;
+}
+
+.future-card p {
+    margin:
+        15px 0 0;
+
+    font-weight:
+        800;
+
+    line-height:
+        1.5;
+}
+
+
+/* =========================================
+   CHARACTERS
+========================================= */
+
+.distance-character-section {
+    width:
+        min(
+            900px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto 120px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap:
+        30px;
+}
+
+.distance-character-message {
+    text-align:
+        center;
+}
+
+.distance-character-image {
+    max-width:
+        190px;
+
+    height:
+        200px;
+
+    object-fit:
+        contain;
+
+    animation:
+        distanceCharacterFloat
+        4s ease-in-out infinite;
+}
+
+.distance-character-note {
+    margin-top:
+        15px;
+
+    padding:
+        15px;
+
+    background:
+        #fff0a6;
+
+    border:
+        2px dashed
+        var(--dark);
+
+    border-radius:
+        15px;
+
+    font-weight:
+        800;
+
+    line-height:
+        1.5;
+}
+
+
+/* =========================================
+   ENDING
+========================================= */
+
+.distance-ending {
+    width:
+        min(
+            800px,
+            calc(100% - 40px)
+        );
+
+    margin:
+        0 auto 130px;
+}
+
+.distance-ending-card {
+    padding:
+        clamp(
+            40px,
+            7vw,
+            75px
+        );
+
+    text-align:
+        center;
+
+    background:
+        white;
+
+    border:
+        var(--border);
+
+    border-radius:
+        30px;
+
+    box-shadow:
+        12px 12px 0
+        var(--pink-300);
+}
+
+.distance-ending-sparkles {
+    margin-bottom:
+        18px;
+
+    color:
+        var(--pink-500);
+
+    font-size:
+        24px;
+
+    letter-spacing:
+        9px;
+}
+
+.distance-ending-card h2 {
+    margin:
+        20px 0;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        clamp(
+            40px,
+            6vw,
+            60px
+        );
+
+    line-height:
+        1;
+}
+
+.distance-ending-card h2 span {
+    display:
+        block;
+
+    color:
+        var(--pink-500);
+}
+
+.distance-ending-card p {
+    max-width:
+        570px;
+
+    margin:
+        15px auto;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.8;
+}
+
+.distance-ending-card
+.primary-button {
+    margin-top:
+        25px;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes distanceMoonFloat {
+
+    0%,
+    100% {
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            translateY(-12px);
+    }
+
+}
+
+@keyframes distanceTwinkle {
+
+    0%,
+    100% {
+        opacity:
+            0.3;
+
+        transform:
+            scale(0.8);
+    }
+
+    50% {
+        opacity:
+            1;
+
+        transform:
+            scale(1.2);
+    }
+
+}
+
+@keyframes cloudMoveOne {
+
+    0%,
+    100% {
+        transform:
+            translateX(0);
+    }
+
+    50% {
+        transform:
+            translateX(30px);
+    }
+
+}
+
+@keyframes cloudMoveTwo {
+
+    0%,
+    100% {
+        transform:
+            translateX(0);
+    }
+
+    50% {
+        transform:
+            translateX(-30px);
+    }
+
+}
+
+@keyframes heartTravel {
+
+    0% {
+        left:
+            0%;
+    }
+
+    50% {
+        left:
+            calc(100% - 25px);
+    }
+
+    100% {
+        left:
+            0%;
+    }
+
+}
+
+@keyframes distanceCharacterFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-12px);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 850px) {
+
+    .distance-hero {
+        grid-template-columns:
+            1fr;
+
+        text-align:
+            center;
+    }
+
+    .distance-hero-content > p {
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+    }
+
+    .distance-connection-card {
+        grid-template-columns:
+            1fr;
+    }
+
+    .distance-line {
+        width:
+            80%;
+
+        margin:
+            20px auto;
+    }
+
+    .distance-miss-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .distance-future-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .distance-future-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .distance-character-section {
+        grid-template-columns:
+            1fr;
+    }
+
+    .distance-sky {
+        min-height:
+            350px;
+    }
+
+    .distance-moon {
+        font-size:
+            85px;
+    }
+
+}
+.letter-backdrop {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2990;
+
+    background:
+        rgba(60, 38, 51, 0.28);
+
+    backdrop-filter:
+        blur(3px);
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s;
+}
+
+.envelope-wrapper.opened
+.letter-backdrop {
+    visibility: visible;
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+.letter-close-button {
+    width: 44px;
+    height: 44px;
+
+    position: sticky;
+
+    top: 0;
+
+    margin-left: auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 20;
+
+    background: var(--pink-100);
+
+    border:
+        2px solid
+        var(--dark);
+
+    border-radius: 50%;
+
+    box-shadow:
+        3px 3px 0
+        var(--dark);
+
+    cursor: pointer;
+
+    font-size: 26px;
+
+    font-weight: 900;
+
+    transition: 0.2s;
+}
+
+.letter-close-button:hover {
+    background: var(--pink-300);
+
+    transform:
+        rotate(8deg);
+}
+
+.letter-sheet {
+    width: calc(100vw - 28px);
+
+    max-height:
+        calc(100vh - 140px);
+
+    top: 100px;
+
+    padding:
+        35px
+        25px
+        50px;
+}
+
+/* =========================================
+   COMPACT SPOTIFY-STYLE MUSIC PLAYER
+========================================= */
+
+.music-player {
+    width: 340px;
+
+    padding: 18px;
+
+    position: fixed;
+
+    right: 24px;
+    top: 105px;
+
+    z-index: 1500;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border: 3px solid var(--dark);
+
+    border-radius: 22px;
+
+    box-shadow:
+        8px 8px 0
+        rgba(60, 38, 51, 0.15);
+
+    transform: translateX(420px);
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.music-player.show {
+    transform: translateX(0);
+}
+
+
+/* HEADER */
+
+.music-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+}
+
+.music-small {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--pink-600);
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.music-header h4 {
+    margin: 0;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size: 15px;
+}
+
+.close-music {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+
+    border: none;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 21px;
+}
+
+
+/* =========================================
+   ALBUM + SONG INFO
+========================================= */
+
+.album-cover-wrapper {
+    width: 100%;
+
+    height: auto;
+
+    margin: 0 0 15px;
+
+    display: grid;
+
+    grid-template-columns:
+        82px 1fr;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+/* ALBUM ART */
+
+.album-cover {
+    width: 82px;
+    height: 82px;
+
+    object-fit: cover;
+
+    border: 2px solid var(--dark);
+
+    border-radius: 12px;
+
+    box-shadow:
+        4px 4px 0
+        rgba(60, 38, 51, 0.13);
+
+    animation: none !important;
+}
+
+
+/* HIDE THE EXTRA MUSIC BADGE */
+
+.album-disc {
+    display: none;
+}
+
+
+/* SONG DETAILS */
+
+.song-details {
+    margin: 0;
+
+    text-align: left;
+}
+
+.song-details strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--dark);
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size: 16px;
+
+    line-height: 1.2;
+}
+
+.song-details span {
+    display: block;
+
+    color:
+        rgba(60, 38, 51, 0.6);
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   SONG SELECTOR
+========================================= */
+
+.song-selector {
+    width: 100%;
+
+    padding: 9px 10px;
+
+    margin-bottom: 12px;
+
+    color: var(--dark);
+
+    background:
+        var(--pink-50);
+
+    border:
+        2px solid
+        var(--dark);
+
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   PROGRESS BAR
+========================================= */
+
+.music-time {
+    display: grid;
+
+    grid-template-columns:
+        35px 1fr 35px;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin:
+        4px 0 12px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+.music-progress-container {
+    display: flex;
+
+    align-items: center;
+}
+
+#musicProgress {
+    width: 100%;
+
+    height: 4px;
+
+    cursor: pointer;
+
+    accent-color:
+        var(--pink-500);
+}
+
+
+/* =========================================
+   CONTROLS
+========================================= */
+
+.music-controls {
+    margin-top: 5px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.music-controls button {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+
+    border:
+        2px solid
+        var(--dark);
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.music-controls button:hover {
+    transform: scale(1.08);
+
+    background:
+        var(--pink-100);
+}
+
+.music-controls .play-button {
+    width: 48px;
+    height: 48px;
+
+    background:
+        var(--pink-400);
+
+    font-size: 18px;
+}
+
+.music-controls .play-button:hover {
+    background:
+        var(--pink-500);
+}
+
+
+/* =========================================
+   PLAYING ANIMATION
+========================================= */
+
+.music-player.music-playing
+.album-cover {
+    transform: none;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .music-player {
+        width:
+            calc(100% - 30px);
+
+        right: 15px;
+
+        top: 90px;
+    }
+
+}
+
+/* =========================================
+   FINAL MUSIC PLAYER OVERRIDE
+   KEEP THIS AT THE VERY BOTTOM
+========================================= */
+
+.music-player {
+    width: 340px !important;
+    max-height: none !important;
+
+    padding: 18px !important;
+
+    overflow: visible !important;
+}
+
+
+/* ALBUM + INFO ROW */
+
+.music-player .album-cover-wrapper {
+    width: 100% !important;
+    height: 82px !important;
+
+    min-height: 82px !important;
+    max-height: 82px !important;
+
+    margin: 0 0 14px 0 !important;
+
+    display: grid !important;
+
+    grid-template-columns:
+        82px minmax(0, 1fr) !important;
+
+    align-items: center !important;
+
+    gap: 14px !important;
+
+    position: relative !important;
+}
+
+
+/* FORCE ALBUM IMAGE SMALL */
+
+.music-player #albumCover,
+.music-player .album-cover {
+    width: 82px !important;
+    height: 82px !important;
+
+    min-width: 82px !important;
+    min-height: 82px !important;
+
+    max-width: 82px !important;
+    max-height: 82px !important;
+
+    display: block !important;
+
+    position: static !important;
+
+    object-fit: cover !important;
+
+    object-position: center !important;
+
+    border:
+        2px solid
+        var(--dark) !important;
+
+    border-radius: 12px !important;
+
+    box-shadow:
+        4px 4px 0
+        rgba(60, 38, 51, 0.13) !important;
+
+    transform: none !important;
+
+    animation: none !important;
+}
+
+
+/* REMOVE OLD DECORATIVE DISC */
+
+.music-player .album-disc {
+    display: none !important;
+}
+
+
+/* SONG INFO BESIDE COVER */
+
+.music-player .song-details {
+    width: auto !important;
+
+    min-width: 0 !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    text-align: left !important;
+}
+
+
+.music-player .song-details strong {
+    display: block !important;
+
+    margin: 0 0 4px !important;
+
+    overflow: hidden !important;
+
+    color:
+        var(--dark) !important;
+
+    font-family:
+        'Fredoka',
+        sans-serif !important;
+
+    font-size: 16px !important;
+
+    font-weight: 700 !important;
+
+    line-height: 1.2 !important;
+
+    text-overflow: ellipsis !important;
+
+    white-space: nowrap !important;
+}
+
+
+.music-player .song-details span {
+    display: block !important;
+
+    overflow: hidden !important;
+
+    color:
+        rgba(60, 38, 51, 0.6) !important;
+
+    font-size: 12px !important;
+
+    font-weight: 700 !important;
+
+    line-height: 1.3 !important;
+
+    text-overflow: ellipsis !important;
+
+    white-space: nowrap !important;
+}
+
+
+/* HEADER */
+
+.music-player .music-header {
+    margin-bottom: 14px !important;
+}
+
+
+/* SELECT */
+
+.music-player .song-selector {
+    width: 100% !important;
+
+    height: auto !important;
+
+    margin:
+        0 0 12px !important;
+
+    padding:
+        8px 10px !important;
+
+    font-size:
+        12px !important;
+}
+
+
+/* PROGRESS */
+
+.music-player .music-time {
+    display: grid !important;
+
+    grid-template-columns:
+        35px 1fr 35px !important;
+
+    align-items: center !important;
+
+    gap: 8px !important;
+
+    margin:
+        8px 0 12px !important;
+
+    font-size:
+        10px !important;
+}
+
+
+.music-player #musicProgress {
+    width: 100% !important;
+}
+
+
+/* CONTROLS */
+
+.music-player .music-controls {
+    display: flex !important;
+
+    justify-content: center !important;
+
+    align-items: center !important;
+
+    gap: 15px !important;
+
+    margin-top:
+        5px !important;
+}
+
+
+.music-player .music-controls button {
+    width: 38px !important;
+    height: 38px !important;
+
+    padding: 0 !important;
+
+    display: flex !important;
+
+    justify-content: center !important;
+    align-items: center !important;
+
+    border-radius: 50% !important;
+}
+
+
+.music-player .music-controls .play-button {
+    width: 48px !important;
+    height: 48px !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .music-player {
+        width:
+            calc(100% - 30px) !important;
+
+        right: 15px !important;
+    }
+
+}
+/* =========================================
+   FINAL COMPACT MUSIC PLAYER
+========================================= */
+
+#musicPlayer {
+    width: 340px !important;
+
+    padding: 18px !important;
+
+    position: fixed !important;
+
+    top: 105px !important;
+    right: 24px !important;
+
+    z-index: 3000 !important;
+
+    background: rgba(255, 255, 255, 0.98) !important;
+
+    border: 3px solid #3c2633 !important;
+
+    border-radius: 22px !important;
+
+    box-shadow:
+        8px 8px 0
+        rgba(60, 38, 51, 0.14) !important;
+
+    overflow: visible !important;
+}
+
+
+.music-header-new {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 16px;
+}
+
+
+.music-header-new-left {
+    min-width: 0;
+}
+
+
+.music-now-playing {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #e9347d;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+#songName {
+    margin: 0;
+
+    overflow: hidden;
+
+    color: #3c2633;
+
+    font-family: 'Fredoka', sans-serif;
+
+    font-size: 15px;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+#closeMusic {
+    width: 30px;
+    height: 30px;
+
+    padding: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    background: transparent;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 22px;
+}
+
+
+/* =========================================
+   TRACK ROW
+========================================= */
+
+.spotify-track-row {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        78px minmax(0, 1fr);
+
+    gap: 14px;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+
+#albumCover {
+    width: 78px !important;
+    height: 78px !important;
+
+    min-width: 78px !important;
+    min-height: 78px !important;
+
+    max-width: 78px !important;
+    max-height: 78px !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+
+    border: 2px solid #3c2633 !important;
+
+    border-radius: 11px !important;
+
+    box-shadow:
+        4px 4px 0
+        rgba(60, 38, 51, 0.12) !important;
+
+    animation: none !important;
+
+    transform: none !important;
+}
+
+
+.spotify-song-info {
+    min-width: 0;
+
+    text-align: left;
+}
+
+
+#musicSongTitle {
+    display: block;
+
+    margin-bottom: 5px;
+
+    overflow: hidden;
+
+    color: #3c2633;
+
+    font-family: 'Fredoka', sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+#musicSongArtist {
+    display: block;
+
+    overflow: hidden;
+
+    color: rgba(60, 38, 51, 0.6);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================
+   SELECT SONG
+========================================= */
+
+#songSelector {
+    width: 100% !important;
+
+    margin-bottom: 12px !important;
+
+    padding: 9px 10px !important;
+
+    color: #3c2633;
+
+    background: #fff7fb;
+
+    border: 2px solid #3c2633 !important;
+
+    border-radius: 10px !important;
+
+    font-size: 12px !important;
+}
+
+
+/* =========================================
+   TIME + PROGRESS
+========================================= */
+
+.spotify-progress-row {
+    display: grid;
+
+    grid-template-columns:
+        34px 1fr 34px;
+
+    gap: 8px;
+
+    align-items: center;
+
+    margin:
+        5px 0
+        14px;
+}
+
+
+.spotify-time {
+    color: rgba(60, 38, 51, 0.7);
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+
+#musicProgress {
+    width: 100% !important;
+
+    cursor: pointer;
+
+    accent-color: #f94f94;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.spotify-controls {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+}
+
+
+.spotify-controls button {
+    width: 38px !important;
+    height: 38px !important;
+
+    padding: 0 !important;
+
+    display: flex !important;
+
+    justify-content: center !important;
+    align-items: center !important;
+
+    background: white !important;
+
+    color: #3c2633 !important;
+
+    border: 2px solid #3c2633 !important;
+
+    border-radius: 50% !important;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+
+.spotify-controls #playPause {
+    width: 48px !important;
+    height: 48px !important;
+
+    background: #ff78ad !important;
+
+    font-size: 18px !important;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    #musicPlayer {
+        width:
+            calc(100% - 30px) !important;
+
+        right: 15px !important;
+
+        top: 90px !important;
+    }
+
+}
+
+
+/* =========================================
+   FINAL HOME POLAROID POSITION
+========================================= */
+
+.hero {
+    position: relative !important;
+
+    min-height: 700px !important;
+}
+
+
+/* Move the whole polaroid container
+   into the left red-square area */
+.hero .hero-visual {
+    position: absolute !important;
+
+    width: 420px !important;
+    height: 420px !important;
+
+    left: 60px !important;
+    top: 110px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 0 !important;
+
+    transform: none !important;
+}
+
+
+/* Reset the polaroid itself */
+.hero .hero-visual .photo-stack {
+    position: relative !important;
+
+    margin: 0 !important;
+
+    transform: scale(0.9) !important;
+}
+
+
+/* Keep the text on the right */
+.hero .hero-content {
+    position: relative !important;
+
+    z-index: 2 !important;
+}
+
+
+/* =========================================
+   TABLET / MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+        min-height: auto !important;
+    }
+
+
+    .hero .hero-visual {
+        position: relative !important;
+
+        width: 100% !important;
+        height: 360px !important;
+
+        left: auto !important;
+        top: auto !important;
+
+        margin-top: 50px !important;
+    }
+
+
+    .hero .hero-visual .photo-stack {
+        transform: scale(0.8) !important;
+    }
+
+}
+
+.distance-circle {
+    width: 96px;
+    height: 96px;
+
+    min-width: 96px;
+    min-height: 96px;
+
+    max-width: 96px;
+    max-height: 96px;
+
+    margin: 0 auto 12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background: #fff4f8;
+
+    border: 3px solid #3c2633;
+
+    border-radius: 50%;
+}
+
+
+.distance-circle img {
+    width: 100% !important;
+    height: 100% !important;
+
+    min-width: 100% !important;
+    min-height: 100% !important;
+
+    max-width: 100% !important;
+    max-height: 100% !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+
+    border-radius: 50% !important;
+}
+
+/* =========================================
+   DISTANCE PAGE PROFILE PHOTOS
+========================================= */
+
+.distance-person {
+    text-align: center;
+}
+
+
+.distance-circle {
+    width: 110px !important;
+    height: 110px !important;
+
+    min-width: 110px !important;
+    min-height: 110px !important;
+
+    max-width: 110px !important;
+    max-height: 110px !important;
+
+    margin: 0 auto 14px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    overflow: hidden !important;
+
+    border:
+        3px solid #3c2633 !important;
+
+    border-radius: 50% !important;
+
+    background:
+        #fff4f8 !important;
+
+    box-sizing: border-box !important;
+}
+
+
+.distance-circle img {
+    width: 110px !important;
+    height: 110px !important;
+
+    min-width: 110px !important;
+    min-height: 110px !important;
+
+    max-width: 110px !important;
+    max-height: 110px !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+
+    object-position: center !important;
+
+    border-radius: 50% !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+}
+
+/* =========================================
+   DISTANCE PERSON TEXT
+========================================= */
+
+.distance-person {
+    text-align: center;
+}
+
+.distance-person-name {
+    margin:
+        8px 0 3px;
+
+    color:
+        #3c2633;
+
+    font-family:
+        'Fredoka',
+        sans-serif;
+
+    font-size:
+        20px;
+
+    font-weight:
+        700;
+}
+
+.distance-person-subtitle {
+    margin: 0;
+
+    color:
+        rgba(60, 38, 51, 0.55);
+
+    font-size:
+        13px;
+
+    font-weight:
+        600;
+}
+
+/* =========================================
+   HOME POLAROID PHOTOS
+========================================= */
+
+.polaroid-photo {
+    width: 100% !important;
+    height: 230px !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: none !important;
+}
+/* =========================================
+   HOME POLAROID ANIMATION
+========================================= */
+
+.polaroid {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease !important;
+}
+
+
+
+.polaroid-back {
+    animation:
+        homePolaroidFloatBack
+        4s ease-in-out
+        infinite;
+}
+
+
+.polaroid-front {
+    animation:
+        homePolaroidFloatFront
+        4.5s ease-in-out
+        infinite 0.4s;
+}
+
+
+/* Pause floating while hovering */
+.polaroid:hover {
+    animation-play-state:
+        paused;
+}
+
+/* =========================================
+   SAFE HOME POLAROID ANIMATION
+   Does not conflict with card positioning
+========================================= */
+
+.polaroid-photo-wrapper {
+    width: 100%;
+    height: 230px;
+
+    overflow: hidden;
+
+    animation:
+        polaroidPhotoFloat
+        4s ease-in-out
+        infinite;
+}
+
+
+.polaroid-front .polaroid-photo-wrapper {
+    animation-delay: 0.5s;
+}
+
+
+.polaroid-photo {
+    width: 100% !important;
+    height: 100% !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+
+    transition:
+        transform 0.35s ease !important;
+}
+
+
+/* gentle automatic floating */
+@keyframes polaroidPhotoFloat {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -6px;
+    }
+
+}
+
+
+/* little zoom on hover */
+.polaroid:hover .polaroid-photo {
+    transform:
+        scale(1.06) !important;
+}
+
+
+/* tiny lift effect using translate property,
+   not transform, so it won't break rotation */
+.polaroid:hover {
+    translate: 0 -8px;
+}
+
+/* =========================================
+   FINAL MEMORY PAGE LAYOUT FIX
+   Desktop + Tablet + Mobile
+========================================= */
+
+
+/* -----------------------------------------
+   DESKTOP ALIGNMENT
+----------------------------------------- */
+
+.memory-lane {
+    width: min(1100px, calc(100% - 40px));
+    margin-left: auto;
+    margin-right: auto;
+
+    position: relative;
+}
+
+
+.memory-entry {
+    width: 100%;
+
+    margin-bottom: 110px;
+
+    position: relative;
+}
+
+
+.memory-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 64px;
+
+    align-items: center;
+}
+
+
+.memory-photo-area,
+.memory-story-card {
+    min-width: 0;
+}
+
+
+.memory-photo-area {
+    min-height: 430px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.memory-story-card {
+    width: 100%;
+
+    box-sizing: border-box;
+}
+
+
+/* Reverse memories:
+   story left, photo right on desktop */
+
+.reverse-memory .memory-photo-area {
+    order: 2;
+}
+
+
+.reverse-memory .memory-story-card {
+    order: 1;
+}
+
+
+/* Keep all normal polaroids consistent */
+
+.memory-polaroid {
+    width: min(340px, 90%);
+    max-width: 100%;
+
+    box-sizing: border-box;
+}
+
+
+.memory-polaroid img {
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 1 / 1;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+
+    box-sizing: border-box;
+}
+
+
+/* Prevent story text from overflowing */
+
+.memory-story-card h2,
+.memory-story-card p,
+.memory-note {
+    overflow-wrap: break-word;
+}
+
+
+/* Special memory */
+
+.special-memory-card {
+    width: 100%;
+
+    box-sizing: border-box;
+}
+
+
+/* Ending */
+
+.memory-ending {
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   TABLET / MOBILE MEMORY PAGE
+========================================= */
+
+@media (max-width: 900px) {
+
+    /* ---------- HERO ---------- */
+
+    .memory-hero {
+        width: calc(100% - 28px);
+
+        margin:
+            45px auto
+            60px;
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+        text-align: center;
+    }
+
+
+    .memory-hero-text {
+        width: 100%;
+    }
+
+
+    .memory-hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .memory-hero-note {
+        max-width: 100%;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        box-sizing: border-box;
+    }
+
+
+    /* ---------- CHARACTERS ---------- */
+
+    .memory-hero-characters {
+        min-height: 230px;
+    }
+
+
+    .memory-character {
+        max-width: 130px;
+    }
+
+
+    .minion-memory {
+        left: 12%;
+
+        bottom: 15px;
+    }
+
+
+    .nailoong-memory {
+        right: 12%;
+
+        top: 10px;
+    }
+
+
+    /* ---------- TIMELINE ---------- */
+
+    .memory-lane {
+        width: calc(100% - 28px);
+    }
+
+
+    /*
+       Hide the vertical timeline on phones/tablets.
+       This prevents it from cutting through stacked cards.
+    */
+    .memory-lane::before {
+        display: none;
+    }
+
+
+    .memory-entry {
+        width: 100%;
+
+        margin-bottom: 75px;
+    }
+
+
+    .memory-date-badge {
+        margin:
+            0 auto
+            26px;
+    }
+
+
+    /* ---------- STACK EACH MEMORY ---------- */
+
+    .memory-grid {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+
+    /*
+       On mobile every memory follows:
+
+       PHOTO
+       STORY
+
+       even the reverse desktop memories.
+    */
+
+    .reverse-memory .memory-photo-area {
+        order: 1;
+    }
+
+
+    .reverse-memory .memory-story-card {
+        order: 2;
+    }
+
+
+    .memory-photo-area {
+        min-height: auto;
+
+        padding:
+            15px 0
+            22px;
+    }
+
+
+    /* ---------- POLAROID ---------- */
+
+    .memory-polaroid {
+        width: min(320px, 88vw);
+
+        max-width: 100%;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    /* Smaller rotation prevents mobile overflow */
+
+    .rotate-left {
+        transform: rotate(-3deg);
+    }
+
+
+    .rotate-right {
+        transform: rotate(3deg);
+    }
+
+
+    /* ---------- STORY CARD ---------- */
+
+    .memory-story-card {
+        width: 100%;
+
+        padding:
+            28px
+            24px;
+
+        box-sizing: border-box;
+    }
+
+
+    .memory-story-card h2,
+    .special-memory-content h2 {
+        font-size:
+            clamp(
+                28px,
+                8vw,
+                40px
+            );
+    }
+
+
+    /* ---------- SPECIAL MEMORY ---------- */
+
+    .special-memory-card {
+        grid-template-columns: 1fr;
+    }
+
+
+    .special-memory-photo {
+        min-height: 0;
+
+        aspect-ratio: 1 / 1;
+
+        border-right: none;
+
+        border-bottom:
+            var(--border);
+    }
+
+
+    .special-memory-photo img {
+        width: 100%;
+        height: 100%;
+
+        min-height: 0;
+
+        aspect-ratio: 1 / 1;
+
+        object-fit: cover;
+        object-position: center;
+    }
+
+
+    .special-photo-placeholder {
+        min-height: 0;
+
+        aspect-ratio: 1 / 1;
+    }
+
+
+    .special-memory-content {
+        padding:
+            35px
+            26px;
+    }
+
+
+    /* ---------- ENDING CARD ---------- */
+
+    .memory-ending {
+        width: calc(100% - 28px);
+
+        margin:
+            30px auto
+            80px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONE
+========================================= */
+
+@media (max-width: 600px) {
+
+    /* ---------- HERO ---------- */
+
+    .memory-hero {
+        width: calc(100% - 24px);
+
+        margin:
+            35px auto
+            45px;
+    }
+
+
+    .memory-hero h1 {
+        margin:
+            15px 0
+            18px;
+
+        font-size:
+            clamp(
+                42px,
+                14vw,
+                58px
+            );
+
+        line-height: 0.98;
+    }
+
+
+    .memory-hero p {
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+
+    .memory-hero-note {
+        width: 100%;
+
+        padding:
+            11px
+            13px;
+
+        font-size: 13px;
+    }
+
+
+    /* ---------- CHARACTERS ---------- */
+
+    .memory-hero-characters {
+        min-height: 190px;
+    }
+
+
+    .memory-character {
+        max-width: 105px;
+    }
+
+
+    .minion-memory {
+        left: 6%;
+    }
+
+
+    .nailoong-memory {
+        right: 6%;
+    }
+
+
+    /* ---------- TIMELINE ---------- */
+
+    .memory-lane {
+        width: calc(100% - 24px);
+    }
+
+
+    .memory-entry {
+        margin-bottom: 60px;
+    }
+
+
+    .memory-date-badge {
+        margin:
+            0 auto
+            22px;
+
+        padding:
+            7px
+            14px;
+
+        font-size: 9px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    /* ---------- GRID ---------- */
+
+    .memory-grid {
+        gap: 18px;
+    }
+
+
+    .memory-photo-area {
+        padding:
+            10px 0
+            18px;
+    }
+
+
+    /* ---------- POLAROID ---------- */
+
+    .memory-polaroid {
+        width: min(285px, 86vw);
+
+        padding:
+            13px
+            13px
+            24px;
+    }
+
+
+    .memory-polaroid::before {
+        width: 82px;
+        height: 22px;
+
+        top: -12px;
+    }
+
+
+    .polaroid-caption {
+        margin-top: 14px;
+
+        font-size: 15px;
+    }
+
+
+    .memory-photo-placeholder {
+        font-size: 55px;
+    }
+
+
+    /* ---------- STORY ---------- */
+
+    .memory-story-card {
+        padding:
+            23px
+            18px;
+
+        border-radius: 17px;
+    }
+
+
+    .memory-small-title {
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .memory-story-card h2,
+    .special-memory-content h2 {
+        font-size:
+            clamp(
+                27px,
+                9vw,
+                36px
+            );
+
+        line-height: 1.1;
+    }
+
+
+    .memory-date-text {
+        font-size: 12px;
+    }
+
+
+    .memory-story-card p,
+    .special-memory-content p {
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+
+    .memory-note {
+        margin-top: 18px;
+
+        padding:
+            13px
+            14px;
+
+        font-size: 14px;
+    }
+
+
+    /* ---------- SPECIAL MEMORY ---------- */
+
+    .special-memory-entry {
+        padding:
+            10px 0
+            20px;
+    }
+
+
+    .special-memory-label {
+        margin-bottom: 22px;
+
+        padding:
+            8px
+            14px;
+
+        font-size: 9px;
+    }
+
+
+    .special-memory-content {
+        padding:
+            27px
+            18px;
+    }
+
+
+    /* ---------- ENDING ---------- */
+
+    .memory-ending {
+        width: calc(100% - 24px);
+
+        margin-bottom: 60px;
+    }
+
+
+    .memory-ending-card {
+        padding:
+            45px
+            18px;
+
+        border-radius: 22px;
+    }
+
+
+    .memory-ending-card h2 {
+        font-size:
+            clamp(
+                31px,
+                10vw,
+                42px
+            );
+
+        line-height: 1.08;
+    }
+
+
+    .memory-ending-card p {
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+
+    /*
+       Smaller tape decorations so they
+       don't extend outside narrow screens.
+    */
+
+    .memory-ending-card::before,
+    .memory-ending-card::after {
+        width: 70px;
+        height: 22px;
+    }
+
+
+    .memory-ending-card::before {
+        left: -8px;
+    }
+
+
+    .memory-ending-card::after {
+        right: -8px;
+    }
+
+}
+
+
+
+
+
+
+}
