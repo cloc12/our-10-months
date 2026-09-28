@@ -454,12 +454,13 @@ I’m really grateful that out of all the people in this world, I get to call yo
             and so many chapters that haven’t even happened yet.
         </p>
 
-        <a
-            href="{{ route('gift.quiz') }}"
-            class="primary-button"
-        >
-            Continue to Our Quiz →
-        </a>
+<a
+    href="{{ route('gift.quiz') }}"
+    class="primary-button"
+    data-turbo="false"
+>
+    Continue to Our Quiz →
+</a>
 
     </div>
 
