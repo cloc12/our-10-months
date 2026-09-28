@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\QuizResponse;
 use Illuminate\Http\Request;
 
+
 class GiftController extends Controller
 {
     public function unlockPage()
@@ -59,7 +60,7 @@ class GiftController extends Controller
 
 public function submitQuiz(Request $request)
 {
-    $request->validate([
+    $validated = $request->validate([
         'answer_1' => ['required', 'string', 'max:2000'],
         'answer_2' => ['required', 'string', 'max:2000'],
         'answer_3' => ['required', 'string', 'max:2000'],
@@ -72,6 +73,8 @@ public function submitQuiz(Request $request)
         'answer_10' => ['required', 'string', 'max:2000'],
     ]);
 
+    QuizResponse::create($validated);
+    
     return redirect()
         ->route('gift.quiz.thankyou');
 }
