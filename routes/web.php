@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\GiftController;
-use App\Http\Middleware\GiftUnlocked;
 use Illuminate\Support\Facades\Route;
 
 Route::get(
@@ -14,77 +13,52 @@ Route::post(
     [GiftController::class, 'unlock']
 )->name('gift.unlock.submit');
 
+Route::get(
+    '/home',
+    [GiftController::class, 'home']
+)->name('gift.home');
 
-Route::middleware(GiftUnlocked::class)
-    ->group(function () {
+Route::get(
+    '/memories',
+    [GiftController::class, 'memories']
+)->name('gift.memories');
 
-        Route::get(
-            '/home',
-            [GiftController::class, 'home']
-        )->name('gift.home');
+Route::get(
+    '/quiz',
+    [GiftController::class, 'quiz']
+)->name('gift.quiz');
 
+Route::post(
+    '/quiz',
+    [GiftController::class, 'submitQuiz']
+)->name('gift.quiz.submit');
 
-        Route::get(
-            '/memories',
-            [GiftController::class, 'memories']
-        )->name('gift.memories');
+Route::get(
+    '/quiz/thank-you',
+    [GiftController::class, 'quizThankYou']
+)->name('gift.quiz.thankyou');
 
+Route::get(
+    '/quiz-answers',
+    [GiftController::class, 'quizAnswers']
+)->name('gift.quiz.answers');
 
-        Route::get(
-            '/quiz',
-            [GiftController::class, 'quiz']
-        )->name('gift.quiz');
+Route::get(
+    '/reasons',
+    [GiftController::class, 'reasons']
+)->name('gift.reasons');
 
+Route::get(
+    '/distance',
+    [GiftController::class, 'distance']
+)->name('gift.distance');
 
-        Route::post(
-            '/quiz',
-            [GiftController::class, 'submitQuiz']
-        )->name('gift.quiz.submit');
+Route::get(
+    '/letter',
+    [GiftController::class, 'letter']
+)->name('gift.letter');
 
-
-        Route::get(
-            '/quiz/thank-you',
-            [GiftController::class, 'quizThankYou']
-        )->name('gift.quiz.thankyou');
-
-
-        Route::get(
-            '/quiz-answers',
-            [GiftController::class, 'quizAnswers']
-        )->name('gift.quiz.answers');
-
-
-        Route::get(
-            '/reasons',
-            [GiftController::class, 'reasons']
-        )->name('gift.reasons');
-
-
-        Route::get(
-            '/distance',
-            [GiftController::class, 'distance']
-        )->name('gift.distance');
-
-
-        Route::get(
-            '/letter',
-            [GiftController::class, 'letter']
-        )->name('gift.letter');
-
-
-        Route::post(
-            '/lock',
-            [GiftController::class, 'lock']
-        )->name('gift.lock');
-    });
-
-    Route::get('/debug-session', function () {
-    return response()->json([
-        'environment' => app()->environment(),
-        'driver' => config('session.driver'),
-        'cookie' => config('session.cookie'),
-        'domain' => config('session.domain'),
-        'secure' => config('session.secure'),
-        'same_site' => config('session.same_site'),
-    ]);
-});
+Route::post(
+    '/lock',
+    [GiftController::class, 'lock']
+)->name('gift.lock');
