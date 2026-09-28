@@ -57,26 +57,24 @@ class GiftController extends Controller
         return view('quiz');
     }
 
-    public function submitQuiz(Request $request)
-    {
-        $validated = $request->validate([
-            'answer_1' => ['required', 'string', 'max:2000'],
-            'answer_2' => ['required', 'string', 'max:2000'],
-            'answer_3' => ['required', 'string', 'max:2000'],
-            'answer_4' => ['required', 'string', 'max:2000'],
-            'answer_5' => ['required', 'string', 'max:2000'],
-            'answer_6' => ['required', 'string', 'max:2000'],
-            'answer_7' => ['required', 'string', 'max:2000'],
-            'answer_8' => ['required', 'string', 'max:2000'],
-            'answer_9' => ['required', 'string', 'max:2000'],
-            'answer_10' => ['required', 'string', 'max:2000'],
-        ]);
+public function submitQuiz(Request $request)
+{
+    $request->validate([
+        'answer_1' => ['required', 'string', 'max:2000'],
+        'answer_2' => ['required', 'string', 'max:2000'],
+        'answer_3' => ['required', 'string', 'max:2000'],
+        'answer_4' => ['required', 'string', 'max:2000'],
+        'answer_5' => ['required', 'string', 'max:2000'],
+        'answer_6' => ['required', 'string', 'max:2000'],
+        'answer_7' => ['required', 'string', 'max:2000'],
+        'answer_8' => ['required', 'string', 'max:2000'],
+        'answer_9' => ['required', 'string', 'max:2000'],
+        'answer_10' => ['required', 'string', 'max:2000'],
+    ]);
 
-        QuizResponse::create($validated);
-
-        return redirect()
-            ->route('gift.quiz.thankyou');
-    }
+    return redirect()
+        ->route('gift.quiz.thankyou');
+}
 
     public function quizThankYou()
     {
