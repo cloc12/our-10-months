@@ -77,3 +77,14 @@ Route::middleware(GiftUnlocked::class)
             [GiftController::class, 'lock']
         )->name('gift.lock');
     });
+
+    Route::get('/debug-session', function () {
+    return response()->json([
+        'environment' => app()->environment(),
+        'driver' => config('session.driver'),
+        'cookie' => config('session.cookie'),
+        'domain' => config('session.domain'),
+        'secure' => config('session.secure'),
+        'same_site' => config('session.same_site'),
+    ]);
+});
