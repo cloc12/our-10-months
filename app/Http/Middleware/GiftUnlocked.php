@@ -10,7 +10,7 @@ class GiftUnlocked
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->session()->get('gift_unlocked')) {
+        if ($request->cookie('gift_unlocked') !== 'yes') {
             return redirect()->route('gift.unlock');
         }
 

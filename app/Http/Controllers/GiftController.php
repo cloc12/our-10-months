@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\QuizResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class GiftController extends Controller
 {
-    public function unlockPage()
+    public function unlockPage(Request $request)
     {
-        if (session('gift_unlocked')) {
+        if ($request->cookie('gift_unlocked') === 'yes') {
             return redirect()->route('gift.home');
         }
 
@@ -36,14 +37,21 @@ class GiftController extends Controller
 
         if (hash_equals($correctPasscode, $enteredPasscode)) {
 
-            $request->session()->put(
+            $cookie = cookie(
                 'gift_unlocked',
-                true
+                'yes',
+                60 * 24 * 30,
+                '/',
+                null,
+                true,
+                true,
+                false,
+                'lax'
             );
 
             return redirect()
                 ->route('gift.home')
-                ->with('unlocked', true);
+                ->withCookie($cookie);
         }
 
         return back()
@@ -120,10 +128,12 @@ class GiftController extends Controller
         return view('letter');
     }
 
-    public function lock(Request $request)
+    public function lock()
     {
-        $request->session()->forget('gift_unlocked');
-
-        return redirect()->route('gift.unlock');
+        return redirect()
+            ->route('gift.unlock')
+            ->withCookie(
+                Cookie::forget('gift_unlocked')
+            );
     }
 }
