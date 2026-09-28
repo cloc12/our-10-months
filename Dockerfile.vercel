@@ -2,28 +2,26 @@ FROM php:8.3-cli
 
 WORKDIR /var/www/html
 
-
 # Install PHP/system dependencies
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
     curl \
     libsqlite3-dev \
+    libpq-dev \
     nodejs \
     npm \
     && docker-php-ext-install \
-        pdo \
         pdo_sqlite \
+        pdo_pgsql \
+        pgsql \
     && rm -rf /var/lib/apt/lists/*
-
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-
 # Copy project
 COPY . .
-
 
 # Install Laravel dependencies
 RUN composer install \
@@ -31,15 +29,12 @@ RUN composer install \
     --optimize-autoloader \
     --no-interaction
 
-
 # Install and build frontend
 RUN npm install
 RUN npm run build
 
-
 # Laravel permissions
 RUN chmod -R 775 storage bootstrap/cache
 
-
-# Vercel provides PORT automatically.
+# Vercel provides PORT automatically
 CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=${PORT:-80}"]
